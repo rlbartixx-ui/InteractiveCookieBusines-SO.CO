@@ -33,25 +33,25 @@ export function MenuSection({ onSelectProduct }: MenuSectionProps) {
   }
 
   return (
-    <section id="menu" className="py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="menu" className="py-20 sm:py-28 md:py-36">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
-        <div ref={ref} className={`reveal mb-12 ${visible ? 'visible' : ''}`}>
-          <SectionHeading eyebrow="The Menu">
-            <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
-              <h2 className="font-display text-[clamp(2.4rem,5vw,4.2rem)] font-light leading-tight">
-                Each one a <em className="italic">story.</em>
+        <div ref={ref} className={`reveal mb-10 sm:mb-14 ${visible ? 'visible' : ''}`}>
+          <SectionHeading eyebrow="The Artisan Menu">
+            <div className="flex items-end justify-between flex-wrap gap-4 mb-6 sm:mb-8">
+              <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.2rem)] font-light leading-tight text-[#2C1A0E]">
+                Each one a <em className="italic text-[#C9B59C]">story.</em>
               </h2>
               <a
                 href="#order"
-                className="text-[0.75rem] tracking-widest uppercase text-[#8B6F5C] border-b border-[#D9CFC7] hover:border-[#C9B59C] hover:text-[#2C1A0E] transition-all pb-0.5"
+                className="text-[0.72rem] tracking-[0.18em] uppercase text-[#8B6F5C] border-b border-[#D9CFC7] hover:border-[#2C1A0E] hover:text-[#2C1A0E] transition-all pb-0.5 font-medium"
               >
-                Order All →
+                Curate a Custom Box →
               </a>
             </div>
 
-            {/* Dietary & Category Filter Chips */}
-            <div className="flex flex-wrap gap-2 pt-2 border-t border-[#D9CFC7]/50">
+            {/* Dietary & Category Filter Chips with mobile touch slider */}
+            <div className="flex gap-2 overflow-x-auto no-scrollbar touch-scroll py-1.5 border-t border-[#D9CFC7]/60 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
               {FILTER_TABS.map(tab => {
                 const isActive = activeFilter === tab.value
                 const count =
@@ -63,22 +63,26 @@ export function MenuSection({ onSelectProduct }: MenuSectionProps) {
                   <button
                     key={tab.value}
                     onClick={() => setActiveFilter(tab.value)}
-                    className={`px-4 py-2 rounded-sm text-xs font-medium uppercase tracking-wider transition-all duration-200 cursor-pointer ${isActive
-                      ? 'bg-[#2C1A0E] text-[#F9F8F6] shadow-sm'
-                      : 'bg-[#EFE9E3] text-[#8B6F5C] hover:bg-[#D9CFC7] hover:text-[#2C1A0E]'
+                    className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-200 cursor-pointer shrink-0 ${isActive
+                        ? 'bg-[#2C1A0E] text-[#F9F8F6] shadow-sm ring-1 ring-[#C9B59C]/40'
+                        : 'bg-[#EFE9E3]/70 text-[#8B6F5C] hover:bg-[#EFE9E3] hover:text-[#2C1A0E] border border-[#D9CFC7]/60'
                       }`}
                   >
                     <span>{tab.label}</span>
-                    <span className="ml-2 text-[0.65rem] opacity-60">({count})</span>
+                    <span className="ml-1.5 text-[0.68rem] opacity-65">({count})</span>
                   </button>
                 )
               })}
             </div>
+            <p className="text-[0.65rem] text-[#8B6F5C]/80 mt-2 flex items-center justify-between sm:hidden">
+              <span>Tap any cookie for flavor dossier</span>
+              <span>← Scroll filters →</span>
+            </p>
           </SectionHeading>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        {/* Responsive Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
           {filteredProducts.map((product, i) => (
             <ProductCard
               key={product.id}

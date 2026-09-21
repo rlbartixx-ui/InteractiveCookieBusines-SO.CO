@@ -4,12 +4,12 @@ export function SoundPill() {
   const { isMusicPlaying, toggleMusic } = useBakerySound()
 
   return (
-    <div className="fixed bottom-5 right-5 z-40">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30">
       <button
         onClick={toggleMusic}
-        className={`group flex items-center gap-3 px-4 py-2.5 rounded-full border shadow-[0_4px_20px_rgba(44,26,14,0.10)] backdrop-blur-md transition-all duration-300 cursor-pointer ${isMusicPlaying
-          ? 'bg-[#2C1A0E] text-[#F9F8F6] border-[#2C1A0E] ring-2 ring-[#C9B59C]/50 shadow-md scale-105'
-          : 'bg-[#F9F8F6]/94 text-[#2C1A0E] border-[#D9CFC7] hover:border-[#2C1A0E]'
+        className={`group flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border shadow-[0_4px_20px_rgba(44,26,14,0.12)] backdrop-blur-md transition-all duration-300 cursor-pointer ${isMusicPlaying
+            ? 'bg-[#2C1A0E] text-[#F9F8F6] border-[#2C1A0E] ring-2 ring-[#C9B59C]/50 shadow-md scale-102'
+            : 'bg-[#F9F8F6]/95 text-[#2C1A0E] border-[#D9CFC7] hover:border-[#2C1A0E]'
           }`}
         aria-label={isMusicPlaying ? 'Mute restaurant piano' : 'Play cozy restaurant piano music'}
         title="Toggle cozy restaurant piano music"
@@ -48,7 +48,7 @@ export function SoundPill() {
             {isMusicPlaying ? 'Now Playing' : 'Cozy Music'}
           </span>
           <span className="font-display italic text-xs mt-0.5">
-            {isMusicPlaying ? 'Cafe Piano ♬' : 'Tap for Piano ♬'}
+            {isMusicPlaying ? 'Cafe Piano' : 'Tap for Piano'}
           </span>
         </div>
 

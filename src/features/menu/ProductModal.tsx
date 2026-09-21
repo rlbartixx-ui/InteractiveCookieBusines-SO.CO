@@ -32,87 +32,95 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
   ]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#2C1A0E]/65 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-[#2C1A0E]/65 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modal Card - Stretched wider */}
+      {/* Modal Card - Responsive Bottom-Sheet on Mobile, Centered Dossier on Desktop */}
       <div
-        className="relative bg-[#F9F8F6] border border-[#D9CFC7] w-full max-w-4xl lg:max-w-5xl max-h-[92vh] overflow-y-auto rounded-sm shadow-2xl z-10"
+        className="relative bg-[#F9F8F6] border border-[#D9CFC7] w-full max-w-4xl lg:max-w-5xl max-h-[90vh] sm:max-h-[88vh] overflow-y-auto rounded-t-xl sm:rounded-sm shadow-2xl z-10 no-scrollbar touch-scroll"
         style={{ animation: 'scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both' }}
       >
+        {/* Mobile drag handle bar */}
+        <div className="sm:hidden w-12 h-1 bg-[#D9CFC7] rounded-full mx-auto mt-2.5 mb-1" />
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-[#F9F8F6]/90 backdrop-blur border border-[#D9CFC7] flex items-center justify-center text-[#2C1A0E] hover:bg-[#2C1A0E] hover:text-[#F9F8F6] transition-colors cursor-pointer"
+          className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#F9F8F6]/95 backdrop-blur border border-[#D9CFC7] flex items-center justify-center text-[#2C1A0E] hover:bg-[#2C1A0E] hover:text-[#F9F8F6] transition-colors cursor-pointer shadow-xs"
           aria-label="Close modal"
         >
           ✕
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 min-h-[540px]">
-          {/* Left Column: Photography & Craft Badges */}
-          <div className="md:col-span-5 relative aspect-square md:aspect-auto overflow-hidden bg-[#EFE9E3] min-h-[320px] md:min-h-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 min-h-0 md:min-h-[500px]">
+          {/* Left Column: Cookie Photography */}
+          <div className="md:col-span-5 relative h-48 sm:h-64 md:h-auto overflow-hidden bg-[#EFE9E3]">
             <img
               src={product.img}
               alt={product.name}
               className="w-full h-full object-cover"
             />
             {product.tag && (
-              <span className="absolute top-5 left-5 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] px-3.5 py-1 text-[0.65rem] tracking-widest uppercase shadow-sm">
+              <span className="absolute top-3 sm:top-4 left-3 sm:left-4 rounded-xs bg-[#2C1A0E] text-[#F9F8F6] px-3 py-1 text-[0.62rem] tracking-widest uppercase shadow-sm">
                 {product.tag}
               </span>
             )}
-            <div className="absolute bottom-5 left-5 right-5 bg-[#F9F8F6]/92 backdrop-blur-md p-4 rounded-sm border border-[#D9CFC7]/70">
-              <p className="text-[0.65rem] tracking-widest uppercase text-[#8B6F5C] font-semibold">
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 bg-[#F9F8F6]/90 backdrop-blur-md p-3 sm:p-3.5 rounded-xs border border-[#D9CFC7]/80">
+              <p className="text-[0.6rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold">
                 Artisanal Batch Bake
               </p>
-              <p className="font-display italic text-sm text-[#2C1A0E] mt-0.5">
+              <p className="font-display italic text-xs sm:text-sm text-[#2C1A0E] mt-0.5 line-clamp-1">
                 Hand-folded dough with browned butter &amp; flaky fleur de sel
               </p>
             </div>
           </div>
 
-          {/* Right Column: Details, Tasting Profile & Sommelier Pairing */}
-          <div className="md:col-span-7 p-6 sm:p-8 md:p-10 flex flex-col justify-between">
+          {/* Right Column: Tasting Notes, Sommelier Pairing & Allergens */}
+          <div className="md:col-span-7 p-5 sm:p-7 md:p-9 flex flex-col justify-between">
             <div>
-              {/* Header & Price */}
-              <div className="flex items-baseline justify-between gap-4 mb-2 pb-3 border-b border-[#D9CFC7]/60">
-                <div>
-                  <span className="text-[0.68rem] tracking-[0.25em] uppercase text-[#C9B59C] font-semibold block mb-1">
+              {/* Header & Price with safety margin away from close button */}
+              <div className="flex items-baseline justify-between gap-4 mb-2 pb-3 border-b border-[#D9CFC7]/60 pr-12 sm:pr-16">
+                <div className="min-w-0">
+                  <span className="text-[0.65rem] tracking-[0.22em] uppercase text-[#C9B59C] font-semibold block mb-0.5">
                     Signature Cookie
                   </span>
-                  <h3 className="font-display text-3xl sm:text-4xl font-light text-[#2C1A0E]">
+                  <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-[#2C1A0E] truncate">
                     {product.name}
                   </h3>
                 </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#2C1A0E] font-medium shrink-0">
-                  {product.price}
-                </span>
+                <div className="flex flex-col items-end shrink-0 pl-2">
+                  <span className="text-[0.6rem] uppercase tracking-wider text-[#8B6F5C] font-semibold">
+                    Price
+                  </span>
+                  <span className="font-display text-xl sm:text-2xl md:text-3xl text-[#2C1A0E] font-medium leading-none">
+                    {product.price}
+                  </span>
+                </div>
               </div>
 
-              <p className="text-sm sm:text-[0.95rem] text-[#8B6F5C] leading-relaxed mb-6 mt-3">
+              <p className="text-xs sm:text-sm text-[#8B6F5C] leading-relaxed mb-5 mt-2">
                 {product.desc}
               </p>
 
-              {/* Grid of Tasting Notes & Pairing for wider balance */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                {/* Sensory Tasting Profile */}
-                <div className="bg-[#EFE9E3]/60 p-4 rounded-sm border border-[#D9CFC7]/60 flex flex-col justify-between">
-                  <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#8B6F5C] mb-3 font-semibold">
+              {/* Sensory Tasting Profile & Sommelier Pairing */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-5">
+                {/* Sensory Profile Progress Bars */}
+                <div className="bg-[#EFE9E3]/60 p-3.5 sm:p-4 rounded-xs border border-[#D9CFC7]/70">
+                  <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C] mb-2.5 font-semibold">
                     Sensory Profile
                   </p>
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {profileAttributes.map(attr => (
                       <div key={attr.label}>
-                        <div className="flex justify-between text-xs text-[#2C1A0E] mb-1">
+                        <div className="flex justify-between text-[0.72rem] text-[#2C1A0E] mb-0.5">
                           <span>{attr.label}</span>
                           <span className="text-[#8B6F5C] font-mono font-medium">{attr.value}/5</span>
                         </div>
-                        <div className="w-full h-1.5 bg-[#D9CFC7]/50 rounded-full overflow-hidden">
+                        <div className="w-full h-1.5 bg-[#D9CFC7]/60 rounded-full overflow-hidden">
                           <div
                             className="h-full bg-[#2C1A0E] rounded-full transition-all duration-500"
                             style={{ width: `${(attr.value / 5) * 100}%` }}
@@ -124,44 +132,44 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
                 </div>
 
                 {/* Sommelier Drink Pairing */}
-                <div className="p-4 bg-[#F9F8F6] border border-[#D9CFC7]/70 border-l-3 border-l-[#2C1A0E] rounded-r-sm flex flex-col justify-between">
+                <div className="p-3.5 sm:p-4 bg-[#F9F8F6] border border-[#D9CFC7]/80 border-l-2 border-l-[#2C1A0E] rounded-r-xs flex flex-col justify-between">
                   <div>
-                    <p className="text-[0.65rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-1">
+                    <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-1">
                       Sommelier Pairing
                     </p>
-                    <p className="font-medium text-sm text-[#2C1A0E] mb-1.5">
+                    <p className="font-medium text-xs sm:text-sm text-[#2C1A0E] mb-1">
                       {product.pairing.beverage}
                     </p>
-                    <p className="text-xs text-[#8B6F5C] italic leading-relaxed">
+                    <p className="text-[0.72rem] text-[#8B6F5C] italic leading-relaxed line-clamp-3">
                       "{product.pairing.tastingNotes}"
                     </p>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-[#D9CFC7]/40 text-[0.7rem] text-[#8B6F5C]">
+                  <div className="mt-2.5 pt-2 border-t border-[#D9CFC7]/40 text-[0.65rem] text-[#8B6F5C]">
                     Best served warm (10s in oven)
                   </div>
                 </div>
               </div>
 
-              {/* Baker's Note & Allergens */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              {/* Baker's Notes & Allergens */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-5">
                 <div>
-                  <p className="text-[0.65rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-2">
-                    Baker's Secret &amp; Freshness
+                  <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-1">
+                    Freshness &amp; Warming
                   </p>
-                  <p className="text-xs text-[#8B6F5C] leading-relaxed">
-                    Crafted in small batches with our proprietary recipe. Best enjoyed fresh or warm for 10 seconds for a molten center.
+                  <p className="text-[0.72rem] text-[#8B6F5C] leading-relaxed">
+                    Baked fresh at dawn daily. Warm for 10 seconds in an oven for molten center and buttery aroma.
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-[0.65rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-2">
+                  <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-1">
                     Allergen Guide
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
                     {product.allergens.map(allergen => (
                       <span
                         key={allergen}
-                        className="px-2.5 py-1 rounded-sm bg-[#D9CFC7]/50 text-[#2C1A0E] text-[0.72rem] font-medium"
+                        className="px-2 py-0.5 rounded-xs bg-[#D9CFC7]/50 text-[#2C1A0E] text-[0.68rem] font-medium"
                       >
                         {allergen}
                       </span>
@@ -171,24 +179,24 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-5 border-t border-[#D9CFC7]">
+            {/* Sticky Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-2.5 pt-4 border-t border-[#D9CFC7]">
               <button
                 onClick={() => {
                   onInspect3D(product)
                   onClose()
                 }}
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] py-3.5 text-[0.75rem] tracking-widest uppercase hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all cursor-pointer shadow-sm"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] py-3 text-[0.72rem] tracking-widest uppercase font-medium hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all cursor-pointer shadow-sm"
               >
                 <span>Inspect in 3D Live</span>
-                <span>✦</span>
+                <span>→</span>
               </button>
               <a
                 href="#order"
                 onClick={onClose}
-                className="inline-flex items-center justify-center rounded-sm border border-[#D9CFC7] text-[#2C1A0E] px-8 py-3.5 text-[0.75rem] tracking-widest uppercase hover:border-[#2C1A0E] hover:bg-[#EFE9E3] transition-all"
+                className="inline-flex items-center justify-center rounded-sm border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] px-6 py-3 text-[0.72rem] tracking-widest uppercase font-medium hover:border-[#2C1A0E] hover:bg-[#EFE9E3] transition-all text-center"
               >
-                Order Now
+                Add to Box Configurator
               </a>
             </div>
           </div>

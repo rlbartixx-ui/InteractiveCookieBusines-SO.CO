@@ -13,14 +13,14 @@ export function StatCard({ stat, index, active, duration = 1200 }: StatCardProps
 
   return (
     <div
-      className={`py-10 md:py-0 text-center reveal reveal-delay-${index + 1} ${active ? 'visible' : ''
-        }`}
+      className={`p-4 sm:p-6 text-center rounded-sm bg-[#F9F8F6]/80 border border-[#D9CFC7]/60 reveal reveal-delay-${index + 1
+        } ${active ? 'visible' : ''}`}
     >
-      <p className="font-display text-[clamp(2.8rem,5vw,4.5rem)] font-light leading-none text-[#2C1A0E]">
+      <p className="font-display text-[clamp(2.2rem,4vw,3.6rem)] font-light leading-none text-[#2C1A0E]">
         {count}
-        {stat.suffix}
+        <span className="text-[#C9B59C] font-normal">{stat.suffix}</span>
       </p>
-      <p className="text-[0.75rem] tracking-widest uppercase text-[#8B6F5C] mt-2">
+      <p className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.16em] uppercase text-[#8B6F5C] mt-2 font-medium">
         {stat.label}
       </p>
     </div>
