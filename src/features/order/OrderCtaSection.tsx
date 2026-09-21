@@ -1,5 +1,6 @@
 import { useReveal } from '../../hooks/useReveal'
 import { SectionHeading } from '../../components/common/SectionHeading'
+import cookieAvatar from '../../images/ChocolateChip.jpg'
 
 export function OrderCtaSection() {
   const { ref, visible } = useReveal()
@@ -18,8 +19,8 @@ export function OrderCtaSection() {
           }`}
       >
         <img
-          src="https://images.unsplash.com/photo-1649634437193-d3a5c51e5981?w=160&h=160&fit=crop&auto=format"
-          alt="S.O Co. cookie"
+          src={cookieAvatar}
+          alt="S.O Co. artisanal cookie"
           className="w-16 h-16 rounded-full object-cover mx-auto mb-8 ring-4 ring-[#EFE9E3]"
         />
 

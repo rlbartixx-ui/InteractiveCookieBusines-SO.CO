@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { MeshDistortMaterial, MeshWobbleMaterial } from '@react-three/drei'
 import * as THREE from 'three'
+import type { Cookie3DVisuals } from '../../types'
 
 /* ─── Chip data: [x, z, radius, height] ─── */
 const CHIPS: [number, number, number, number][] = [
@@ -22,28 +23,35 @@ const CHIPS: [number, number, number, number][] = [
   [0.32, 0.44, 0.057, 0.037],
 ]
 
-/* ─── Small sesame-like dots ─── */
+/* ─── Fleck dots (salt / sesame / crumbs) ─── */
 const DOTS: [number, number][] = [
   [0.55, 0.32], [-0.50, 0.44], [0.44, -0.46],
   [-0.34, -0.54], [0.12, 0.64], [0.62, -0.18],
   [-0.60, -0.08], [0.22, -0.60], [-0.46, 0.56],
+  [0.08, -0.15], [-0.12, -0.10], [0.25, 0.12],
 ]
 
 interface HeroCookieProps {
   mouse: React.MutableRefObject<[number, number]>
+  visuals: Cookie3DVisuals
+  isInspectMode?: boolean
 }
 
-export function HeroCookie({ mouse }: HeroCookieProps) {
+export function HeroCookie({ mouse, visuals, isInspectMode = false }: HeroCookieProps) {
   const group = useRef<THREE.Group>(null)
-  const topRef = useRef<THREE.Mesh>(null)
 
   useFrame((_, delta) => {
     if (!group.current) return
-    const [mx, my] = mouse.current
-    // Tilt toward mouse, continuous spin on Z
-    group.current.rotation.y += (mx * 0.55 - group.current.rotation.y) * 0.055
-    group.current.rotation.x += (-my * 0.30 - group.current.rotation.x) * 0.055
-    group.current.rotation.z += delta * 0.10
+    if (isInspectMode) {
+      // Gentle slow float rotation in inspect mode
+      group.current.rotation.z += delta * 0.05
+    } else {
+      const [mx, my] = mouse.current
+      // Tilt toward mouse, continuous spin on Z
+      group.current.rotation.y += (mx * 0.55 - group.current.rotation.y) * 0.055
+      group.current.rotation.x += (-my * 0.30 - group.current.rotation.x) * 0.055
+      group.current.rotation.z += delta * 0.10
+    }
   })
 
   return (
@@ -51,36 +59,44 @@ export function HeroCookie({ mouse }: HeroCookieProps) {
       {/* Bottom rim — slightly darker, crumbly edge */}
       <mesh>
         <cylinderGeometry args={[0.98, 0.94, 0.28, 72, 1]} />
-        <meshStandardMaterial color="#A8703F" roughness={0.94} metalness={0.0} />
-      </mesh>
-
-      {/* Inner body — slightly lighter crumb interior */}
-      <mesh>
-        <cylinderGeometry args={[0.88, 0.88, 0.26, 72, 1]} />
-        <meshStandardMaterial color="#C8894F" roughness={0.90} metalness={0.0} />
-      </mesh>
-
-      {/* Top baked surface — warm golden with wobble texture */}
-      <mesh ref={topRef} position={[0, 0.14, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[0.92, 72]} />
-        <MeshWobbleMaterial
-          color="#D4A05A"
-          roughness={0.88}
-          metalness={0.02}
-          factor={0.04}
-          speed={0.8}
+        <meshStandardMaterial
+          color={visuals.crustColor}
+          roughness={Math.min(visuals.roughness + 0.06, 1)}
+          metalness={0.0}
         />
       </mesh>
 
-      {/* Center slightly darker */}
+      {/* Inner body — crumb interior */}
+      <mesh>
+        <cylinderGeometry args={[0.88, 0.88, 0.26, 72, 1]} />
+        <meshStandardMaterial
+          color={visuals.innerColor}
+          roughness={visuals.roughness}
+          metalness={0.0}
+        />
+      </mesh>
+
+      {/* Top baked surface with wobble texture */}
+      <mesh position={[0, 0.14, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[0.92, 72]} />
+        <MeshWobbleMaterial
+          color={visuals.topColor}
+          roughness={visuals.roughness}
+          metalness={0.02}
+          factor={visuals.wobbleFactor}
+          speed={visuals.speed}
+        />
+      </mesh>
+
+      {/* Center baked variation */}
       <mesh position={[0, 0.145, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[0.45, 48]} />
         <MeshDistortMaterial
-          color="#C49048"
-          roughness={0.92}
+          color={visuals.centerColor}
+          roughness={visuals.roughness + 0.02}
           metalness={0.0}
           distort={0.05}
-          speed={0.6}
+          speed={visuals.speed * 0.8}
         />
       </mesh>
 
@@ -89,33 +105,45 @@ export function HeroCookie({ mouse }: HeroCookieProps) {
         <mesh key={i} position={[0, 0.142, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[r - 0.012, r, 60]} />
           <meshStandardMaterial
-            color="#B87840"
+            color={visuals.ringColor}
             transparent
-            opacity={0.18}
+            opacity={0.22}
             side={THREE.DoubleSide}
           />
         </mesh>
       ))}
 
-      {/* Chocolate chips */}
+      {/* Chocolate / cream chips */}
       {CHIPS.map(([x, z, radius, h], i) => (
         <group key={i} position={[x, 0.14, z]}>
           <mesh>
             <sphereGeometry args={[radius, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.6]} />
-            <meshStandardMaterial color="#2A1508" roughness={0.65} metalness={0.12} />
+            <meshStandardMaterial
+              color={visuals.chipColor}
+              roughness={0.65}
+              metalness={0.12}
+            />
           </mesh>
           <mesh position={[0, -h * 0.3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
             <circleGeometry args={[radius * 0.85, 12]} />
-            <meshStandardMaterial color="#1E0F04" roughness={0.7} metalness={0.1} />
+            <meshStandardMaterial
+              color={visuals.chipBaseColor}
+              roughness={0.7}
+              metalness={0.1}
+            />
           </mesh>
         </group>
       ))}
 
-      {/* Sesame / oat fleck dots */}
+      {/* Accent fleck dots (salt / sesame / powdered sugar) */}
       {DOTS.map(([x, z], i) => (
         <mesh key={i} position={[x, 0.148, z]}>
-          <sphereGeometry args={[0.025, 6, 6]} />
-          <meshStandardMaterial color="#C8A868" roughness={0.96} metalness={0.0} />
+          <sphereGeometry args={[0.024, 6, 6]} />
+          <meshStandardMaterial
+            color={visuals.accentDotColor}
+            roughness={0.96}
+            metalness={0.0}
+          />
         </mesh>
       ))}
 

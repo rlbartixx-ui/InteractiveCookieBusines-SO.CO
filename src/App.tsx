@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import { MarqueeTicker } from './components/layout/MarqueeTicker'
@@ -11,7 +12,12 @@ import { TestimonialsSection } from './features/testimonials/TestimonialsSection
 import { OrderCtaSection } from './features/order/OrderCtaSection'
 import { NewsletterSection } from './features/newsletter/NewsletterSection'
 
+import { PRODUCTS } from './data/products'
+import type { Product } from './types'
+
 export default function App() {
+  const [selectedProduct, setSelectedProduct] = useState<Product>(PRODUCTS[0])
+
   return (
     <div className="min-h-screen bg-[#F9F8F6] text-[#2C1A0E] font-body overflow-x-hidden">
       {/* Navigation Header */}
@@ -19,10 +25,13 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        <HeroSection />
+        <HeroSection
+          selectedProduct={selectedProduct}
+          onSelectProduct={setSelectedProduct}
+        />
         <MarqueeTicker />
         <StatsSection />
-        <MenuSection />
+        <MenuSection onSelectProduct={setSelectedProduct} />
         <ProcessSection />
         <StorySection />
         <TestimonialsSection />
