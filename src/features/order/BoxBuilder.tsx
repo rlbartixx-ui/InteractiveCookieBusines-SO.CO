@@ -8,13 +8,12 @@ interface BoxConfig {
   capacity: BoxCapacity
   label: string
   tag: string
-  discountRate: number // 0.05 = 5% off
 }
 
 const BOX_OPTIONS: BoxConfig[] = [
-  { capacity: 4, label: '4-Pack Sampler', tag: 'Personal', discountRate: 0 },
-  { capacity: 6, label: '6-Pack Box', tag: 'Most Popular · 5% Off', discountRate: 0.05 },
-  { capacity: 12, label: 'Party Dozen (12)', tag: 'Best Value · 10% Off', discountRate: 0.1 },
+  { capacity: 4, label: '4-Pack Sampler', tag: 'Personal Box' },
+  { capacity: 6, label: '6-Pack Box', tag: 'Half Dozen' },
+  { capacity: 12, label: 'Party Dozen (12)', tag: 'Full Dozen' },
 ]
 
 function parsePrice(priceStr: string): number {
@@ -74,9 +73,7 @@ export function BoxBuilder({ onInspectProduct }: BoxBuilderProps) {
   }
 
   // Price calculations
-  const rawTotal = boxItems.reduce((acc, item) => acc + parsePrice(item.price), 0)
-  const discountAmount = Math.round(rawTotal * currentConfig.discountRate)
-  const finalTotal = rawTotal - discountAmount
+  const total = boxItems.reduce((acc, item) => acc + parsePrice(item.price), 0)
   const isFull = boxItems.length === selectedCapacity
   const remainingSlots = selectedCapacity - boxItems.length
 
@@ -97,8 +94,7 @@ Box Size: ${currentConfig.label} (${boxItems.length}/${selectedCapacity} items)
 Flavors Selected:
 ${itemsList}
 
-Estimated Total: ₱${finalTotal} ${discountAmount > 0 ? `(Includes ₱${discountAmount} box discount)` : ''
-      }
+Estimated Total: ₱${total}
 Preferred Pickup: [Please specify Date & Time, Tue-Sun 8am-2pm]
 Name: [Your Name]`
   }
@@ -182,8 +178,8 @@ Name: [Your Name]`
           </p>
           <span
             className={`text-xs font-semibold px-2 py-0.5 rounded-full ${isFull
-                ? 'bg-emerald-100 text-emerald-800'
-                : 'bg-amber-100 text-amber-800'
+              ? 'bg-emerald-100 text-emerald-800'
+              : 'bg-amber-100 text-amber-800'
               }`}
           >
             {isFull ? 'Box Complete' : `${remainingSlots} slots remaining`}
@@ -296,13 +292,8 @@ Name: [Your Name]`
               Box Total:
             </span>
             <span className="font-display text-2xl sm:text-3xl font-medium text-[#2C1A0E]">
-              ₱{finalTotal}
+              ₱{total}
             </span>
-            {discountAmount > 0 && (
-              <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-sm border border-emerald-200">
-                Saved ₱{discountAmount}
-              </span>
-            )}
           </div>
           <p className="text-[0.7rem] text-[#8B6F5C] mt-0.5">
             {boxItems.length} of {selectedCapacity} items selected · Fresh baked to order
