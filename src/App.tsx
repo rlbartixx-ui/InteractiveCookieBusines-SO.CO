@@ -11,6 +11,7 @@ import { StorySection } from './features/story/StorySection'
 import { TestimonialsSection } from './features/testimonials/TestimonialsSection'
 import { OrderCtaSection } from './features/order/OrderCtaSection'
 import { NewsletterSection } from './features/newsletter/NewsletterSection'
+import { SoundPill } from './features/audio/SoundPill'
 
 import { PRODUCTS } from './data/products'
 import type { Product } from './types'
@@ -41,6 +42,9 @@ export default function App() {
 
       {/* Site Footer */}
       <Footer />
+
+      {/* Floating ASMR Bakery Sound Pill */}
+      <SoundPill />
     </div>
   )
 }

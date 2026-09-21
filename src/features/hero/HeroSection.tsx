@@ -81,11 +81,10 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
                   <button
                     key={product.id}
                     onClick={() => onSelectProduct(product)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? 'bg-[#2C1A0E] text-[#F9F8F6] shadow-sm scale-105'
-                        : 'bg-[#EFE9E3]/80 hover:bg-[#EFE9E3] text-[#8B6F5C] hover:text-[#2C1A0E]'
-                    }`}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs transition-all duration-300 cursor-pointer ${isActive
+                      ? 'bg-[#2C1A0E] text-[#F9F8F6] shadow-sm scale-105'
+                      : 'bg-[#EFE9E3]/80 hover:bg-[#EFE9E3] text-[#8B6F5C] hover:text-[#2C1A0E]'
+                      }`}
                   >
                     <span
                       className="w-2.5 h-2.5 rounded-full ring-1 ring-black/10 shrink-0"
@@ -154,16 +153,14 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
           <div className="mt-4 flex flex-col items-center gap-2">
             <button
               onClick={() => setIsInspectMode(prev => !prev)}
-              className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                isInspectMode
-                  ? 'bg-[#2C1A0E] text-[#F9F8F6] ring-2 ring-[#C9B59C]'
-                  : 'bg-[#F9F8F6] border border-[#D9CFC7] text-[#8B6F5C] hover:border-[#2C1A0E] hover:text-[#2C1A0E]'
-              }`}
+              className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer ${isInspectMode
+                ? 'bg-[#2C1A0E] text-[#F9F8F6] ring-2 ring-[#C9B59C]'
+                : 'bg-[#F9F8F6] border border-[#D9CFC7] text-[#8B6F5C] hover:border-[#2C1A0E] hover:text-[#2C1A0E]'
+                }`}
             >
               <svg
-                className={`w-3.5 h-3.5 transition-transform duration-500 ${
-                  isInspectMode ? 'rotate-180 text-[#C9B59C]' : ''
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-500 ${isInspectMode ? 'rotate-180 text-[#C9B59C]' : ''
+                  }`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

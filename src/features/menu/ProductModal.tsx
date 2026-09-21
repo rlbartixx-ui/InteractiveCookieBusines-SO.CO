@@ -142,22 +142,15 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
                 </div>
               </div>
 
-              {/* Ingredients & Allergens in columns */}
+              {/* Baker's Note & Allergens */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <div>
                   <p className="text-[0.65rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-2">
-                    Key Ingredients
+                    Baker's Secret &amp; Freshness
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {product.ingredients.slice(0, 4).map(ing => (
-                      <span
-                        key={ing}
-                        className="px-2.5 py-1 rounded-sm bg-[#EFE9E3] text-[#2C1A0E] text-[0.72rem]"
-                      >
-                        {ing}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-xs text-[#8B6F5C] leading-relaxed">
+                    Crafted in small batches with our proprietary recipe. Best enjoyed fresh or warm for 10 seconds for a molten center.
+                  </p>
                 </div>
 
                 <div>
