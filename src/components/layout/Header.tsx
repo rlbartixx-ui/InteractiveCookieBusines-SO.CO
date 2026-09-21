@@ -56,7 +56,7 @@ export function Header({ navItems = NAV_ITEMS }: HeaderProps) {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-[0.75rem] lg:text-[0.8rem] tracking-[0.18em] uppercase font-medium">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-8 text-[0.7rem] lg:text-[0.8rem] tracking-[0.12em] lg:tracking-[0.18em] uppercase font-medium">
             {navItems.map(item => (
               <a
                 key={item}
@@ -72,7 +72,7 @@ export function Header({ navItems = NAV_ITEMS }: HeaderProps) {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#order"
-              className="inline-flex items-center gap-2 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] px-5 py-2.5 text-[0.72rem] tracking-[0.16em] uppercase hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all duration-300 shadow-sm active:scale-95 cursor-pointer font-medium"
+              className="inline-flex items-center gap-2 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] px-3.5 lg:px-5 py-2 lg:py-2.5 text-[0.68rem] lg:text-[0.72rem] tracking-[0.12em] lg:tracking-[0.16em] uppercase hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all duration-300 shadow-sm active:scale-95 cursor-pointer font-medium"
             >
               <span>Build Box</span>
               <span className="text-[0.8rem] transition-transform duration-200 group-hover:translate-x-0.5">→</span>

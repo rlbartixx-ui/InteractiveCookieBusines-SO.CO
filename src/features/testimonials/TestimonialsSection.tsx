@@ -44,7 +44,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Carousel Slide Area */}
-        <div className="relative min-h-[190px] sm:min-h-[160px] flex items-center justify-center">
+        <div className="relative min-h-[230px] sm:min-h-[180px] md:min-h-[160px] flex items-center justify-center">
           {TESTIMONIALS.map((t, i) => (
             <div
               key={t.name}

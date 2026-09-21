@@ -169,7 +169,7 @@ Name: [Your Name]`
 
       {/* Step 2: Visual Box Tray */}
       <div className="mb-7 bg-[#EFE9E3]/50 p-4 sm:p-5 rounded-sm border border-[#D9CFC7]/70">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
           <p className="text-[0.68rem] tracking-[0.22em] uppercase text-[#8B6F5C] font-semibold flex items-center gap-2">
             <span className="w-5 h-5 rounded-full bg-[#2C1A0E] text-[#F9F8F6] inline-flex items-center justify-center text-[0.62rem]">
               2
@@ -187,7 +187,7 @@ Name: [Your Name]`
         </div>
 
         {/* Visual Slots Grid */}
-        <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-2.5">
+        <div className="grid grid-cols-2 min-[360px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-2.5">
           {Array.from({ length: selectedCapacity }).map((_, index) => {
             const item = boxItems[index]
             if (item) {
@@ -285,8 +285,8 @@ Name: [Your Name]`
       </div>
 
       {/* Order Summary & Dispatch Action Bar */}
-      <div className="pt-5 border-t border-[#D9CFC7] flex flex-col md:flex-row items-center justify-between gap-5">
-        <div>
+      <div className="pt-5 border-t border-[#D9CFC7] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-5">
+        <div className="w-full md:w-auto">
           <div className="flex items-baseline gap-3">
             <span className="text-xs uppercase tracking-widest text-[#8B6F5C] font-semibold">
               Box Total:
@@ -305,7 +305,7 @@ Name: [Your Name]`
           <button
             onClick={handleCopyOrder}
             disabled={boxItems.length === 0}
-            className="px-5 py-3 rounded-sm border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] text-[0.72rem] tracking-widest uppercase font-medium hover:bg-[#EFE9E3] hover:border-[#2C1A0E] transition-all cursor-pointer text-center"
+            className="px-4 sm:px-5 py-3 rounded-sm border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] text-[0.72rem] tracking-wider sm:tracking-widest uppercase font-medium hover:bg-[#EFE9E3] hover:border-[#2C1A0E] transition-all cursor-pointer text-center"
           >
             {copied ? 'Order Copied' : 'Copy Order Text'}
           </button>
@@ -315,7 +315,7 @@ Name: [Your Name]`
             href="https://www.instagram.com/s.ocookieco/"
             target="_blank"
             rel="noreferrer"
-            className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] text-[0.72rem] tracking-widest uppercase font-medium hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all shadow-md cursor-pointer text-center ${boxItems.length === 0 ? 'opacity-50 pointer-events-none' : ''
+            className={`inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] text-[0.72rem] tracking-wider sm:tracking-widest uppercase font-medium hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all shadow-md cursor-pointer text-center ${boxItems.length === 0 ? 'opacity-50 pointer-events-none' : ''
               }`}
           >
             <span>Send Order via Instagram</span>
