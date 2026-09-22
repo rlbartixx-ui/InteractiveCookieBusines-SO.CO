@@ -7,9 +7,9 @@ export function SoundPill() {
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30">
       <button
         onClick={toggleMusic}
-        className={`group flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border shadow-[0_4px_20px_rgba(44,26,14,0.12)] backdrop-blur-md transition-all duration-300 cursor-pointer ${isMusicPlaying
-            ? 'bg-[#2C1A0E] text-[#F9F8F6] border-[#2C1A0E] ring-2 ring-[#C9B59C]/50 shadow-md scale-102'
-            : 'bg-[#F9F8F6]/95 text-[#2C1A0E] border-[#D9CFC7] hover:border-[#2C1A0E]'
+        className={`group flex items-center gap-2.5 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border shadow-[0_4px_20px_rgba(58,42,32,0.12)] backdrop-blur-md transition-all duration-300 cursor-pointer ${isMusicPlaying
+          ? 'bg-[#3A2A20] text-[#FFF7E4] border-[#3A2A20] ring-2 ring-[#F6C453]/50 shadow-md scale-102'
+          : 'bg-[#FFF7E4]/95 text-[#3A2A20] border-[#E7D7BE] hover:border-[#3A2A20]'
           }`}
         aria-label={isMusicPlaying ? 'Mute restaurant piano' : 'Play cozy restaurant piano music'}
         title="Toggle cozy restaurant piano music"
@@ -18,26 +18,26 @@ export function SoundPill() {
         <div className="flex items-end gap-[3px] h-4 w-4 justify-center">
           <span
             className={`w-[2.5px] rounded-full transition-all ${isMusicPlaying
-              ? 'bg-[#C9B59C] animate-eq-1'
-              : 'h-1.5 bg-[#8B6F5C]/60 group-hover:bg-[#2C1A0E]'
+              ? 'bg-[#F6C453] animate-eq-1'
+              : 'h-1.5 bg-[#7C604D]/60 group-hover:bg-[#3A2A20]'
               }`}
           />
           <span
             className={`w-[2.5px] rounded-full transition-all ${isMusicPlaying
-              ? 'bg-[#C9B59C] animate-eq-2'
-              : 'h-3 bg-[#8B6F5C]/60 group-hover:bg-[#2C1A0E]'
+              ? 'bg-[#F6C453] animate-eq-2'
+              : 'h-3 bg-[#7C604D]/60 group-hover:bg-[#3A2A20]'
               }`}
           />
           <span
             className={`w-[2.5px] rounded-full transition-all ${isMusicPlaying
-              ? 'bg-[#C9B59C] animate-eq-3'
-              : 'h-2 bg-[#8B6F5C]/60 group-hover:bg-[#2C1A0E]'
+              ? 'bg-[#F6C453] animate-eq-3'
+              : 'h-2 bg-[#7C604D]/60 group-hover:bg-[#3A2A20]'
               }`}
           />
           <span
             className={`w-[2.5px] rounded-full transition-all ${isMusicPlaying
-              ? 'bg-[#C9B59C] animate-eq-4'
-              : 'h-1 bg-[#8B6F5C]/60 group-hover:bg-[#2C1A0E]'
+              ? 'bg-[#F6C453] animate-eq-4'
+              : 'h-1 bg-[#7C604D]/60 group-hover:bg-[#3A2A20]'
               }`}
           />
         </div>
@@ -55,8 +55,8 @@ export function SoundPill() {
         {/* Status indicator dot */}
         <span
           className={`w-2 h-2 rounded-full transition-all duration-300 ${isMusicPlaying
-            ? 'bg-[#C9B59C] animate-pulse shadow-[0_0_8px_#C9B59C]'
-            : 'bg-[#D9CFC7] group-hover:bg-[#8B6F5C]'
+            ? 'bg-[#F6C453] animate-pulse shadow-[0_0_8px_#F6C453]'
+            : 'bg-[#E7D7BE] group-hover:bg-[#7C604D]'
             }`}
         />
       </button>

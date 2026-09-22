@@ -125,7 +125,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
             cy="160"
             r="154"
             fill="none"
-            stroke="#C9B59C"
+            stroke="#F6C453"
             strokeWidth="0.8"
             strokeDasharray="4 10"
           />
@@ -140,7 +140,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
 
       {/* Carousel Container */}
       <div
-        className="relative w-full max-w-[290px] min-[420px]:max-w-[320px] sm:max-w-[350px] md:max-w-[370px] lg:max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-[#D9CFC7]/80 bg-[#F9F8F6] cursor-grab active:cursor-grabbing transition-transform duration-300 hover:shadow-[0_25px_60px_-15px_rgba(44,26,14,0.22)]"
+        className="relative w-full max-w-[290px] min-[420px]:max-w-[320px] sm:max-w-[350px] md:max-w-[370px] lg:max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-[#E7D7BE] bg-[#FFF7E4] cursor-grab active:cursor-grabbing transition-transform duration-300 hover:shadow-[0_25px_60px_-15px_rgba(58,42,32,0.22)]"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -152,7 +152,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
         {isAutoplay && !isHovered && (
           <div
             key={activeIndex}
-            className="absolute top-0 left-0 right-0 h-[2.5px] bg-[#C9B59C] z-30 origin-left pointer-events-none"
+            className="absolute top-0 left-0 right-0 h-[2.5px] bg-[#F6C453] z-30 origin-left pointer-events-none"
             style={{
               animation: 'carouselProgress 5s linear forwards',
             }}
@@ -170,7 +170,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
           {PRODUCTS.map((product, idx) => (
             <div
               key={product.id}
-              className="relative w-full h-full shrink-0 overflow-hidden flex items-center justify-center bg-gradient-to-b from-[#FAF8F5] to-[#EFEAE4]"
+              className="relative w-full h-full shrink-0 overflow-hidden flex items-center justify-center bg-gradient-to-b from-[#FFFDF9] to-[#F6ECD4]"
             >
               {/* Product Image */}
               <img
@@ -188,38 +188,38 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
               {/* Top Floating Badges */}
               <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between pointer-events-none z-10">
                 {product.tag ? (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2C1A0E]/90 backdrop-blur-sm text-[#F9F8F6] text-[0.65rem] tracking-[0.16em] uppercase font-semibold shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9B59C]" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3A2A20]/90 backdrop-blur-sm text-[#FFF7E4] text-[0.65rem] tracking-[0.16em] uppercase font-semibold shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E07A3C]" />
                     {product.tag}
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2C1A0E]/80 backdrop-blur-sm text-[#F9F8F6] text-[0.65rem] tracking-[0.16em] uppercase font-semibold shadow-sm">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3A2A20]/80 backdrop-blur-sm text-[#FFF7E4] text-[0.65rem] tracking-[0.16em] uppercase font-semibold shadow-sm">
                     Fresh Batch
                   </span>
                 )}
 
-                <span className="px-3 py-1 rounded-full bg-[#F9F8F6]/95 backdrop-blur-md text-[#2C1A0E] text-xs font-bold tracking-tight shadow-md border border-white/60">
+                <span className="px-3 py-1 rounded-full bg-[#FFF7E4]/95 backdrop-blur-md text-[#3A2A20] text-xs font-bold tracking-tight shadow-md border border-white/60">
                   {product.price}
                 </span>
               </div>
 
               {/* Bottom Frosted Card Details */}
-              <div className="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-3 p-3 sm:p-3.5 rounded-xl bg-[#2C1A0E]/90 backdrop-blur-md text-[#F9F8F6] border border-white/15 shadow-xl transition-all pointer-events-none z-10">
+              <div className="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-3 p-3 sm:p-3.5 rounded-xl bg-[#3A2A20]/90 backdrop-blur-md text-[#FFF7E4] border border-white/15 shadow-xl transition-all pointer-events-none z-10">
                 <div className="flex items-baseline justify-between gap-2 mb-0.5">
-                  <h3 className="font-display text-base sm:text-lg font-light text-[#F9F8F6]">
+                  <h3 className="font-display text-base sm:text-lg font-light text-[#FFF7E4]">
                     {product.name}
                   </h3>
-                  <span className="text-[0.65rem] tracking-wider uppercase text-[#C9B59C] font-mono">
+                  <span className="text-[0.65rem] tracking-wider uppercase text-[#F6C453] font-mono">
                     0{idx + 1} / 0{PRODUCTS.length}
                   </span>
                 </div>
-                <p className="text-[0.72rem] sm:text-[0.78rem] text-[#EFE9E3]/90 line-clamp-2 leading-relaxed font-light">
+                <p className="text-[0.72rem] sm:text-[0.78rem] text-[#F6ECD4]/90 line-clamp-2 leading-relaxed font-light">
                   {product.desc}
                 </p>
                 {product.pairing && (
-                  <div className="mt-1.5 pt-1.5 border-t border-white/10 flex items-center gap-1.5 text-[0.62rem] text-[#C9B59C]">
+                  <div className="mt-1.5 pt-1.5 border-t border-white/10 flex items-center gap-1.5 text-[0.62rem] text-[#F6C453]">
                     <span className="font-medium uppercase tracking-wider">Pair with:</span>
-                    <span className="text-[#EFE9E3]/85 truncate">{product.pairing.beverage}</span>
+                    <span className="text-[#F6ECD4]/85 truncate">{product.pairing.beverage}</span>
                   </div>
                 )}
               </div>
@@ -235,7 +235,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
             goPrev()
           }}
           aria-label="Previous cookie"
-          className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#F9F8F6]/90 hover:bg-[#2C1A0E] text-[#2C1A0E] hover:text-[#F9F8F6] border border-[#D9CFC7]/80 shadow-md flex items-center justify-center transition-all duration-200 cursor-pointer z-20 hover:scale-105 active:scale-95"
+          className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#FFF7E4]/90 hover:bg-[#E07A3C] text-[#3A2A20] hover:text-[#FFF7E4] border border-[#E7D7BE] shadow-md flex items-center justify-center transition-all duration-200 cursor-pointer z-20 hover:scale-105 active:scale-95"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -249,7 +249,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
             goNext()
           }}
           aria-label="Next cookie"
-          className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#F9F8F6]/90 hover:bg-[#2C1A0E] text-[#2C1A0E] hover:text-[#F9F8F6] border border-[#D9CFC7]/80 shadow-md flex items-center justify-center transition-all duration-200 cursor-pointer z-20 hover:scale-105 active:scale-95"
+          className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#FFF7E4]/90 hover:bg-[#E07A3C] text-[#3A2A20] hover:text-[#FFF7E4] border border-[#E7D7BE] shadow-md flex items-center justify-center transition-all duration-200 cursor-pointer z-20 hover:scale-105 active:scale-95"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -260,7 +260,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
       {/* Bottom Carousel Controls: Dots & Autoplay Toggle */}
       <div className="mt-3.5 flex items-center gap-3 z-20">
         {/* Slide Counter & Dots */}
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EFE9E3]/80 border border-[#D9CFC7]/70 shadow-xs">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F6ECD4] border border-[#E7D7BE] shadow-xs">
           {PRODUCTS.map((p, index) => {
             const isActive = index === activeIndex
             return (
@@ -270,8 +270,8 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to ${p.name}`}
                 className={`transition-all duration-300 rounded-full cursor-pointer ${isActive
-                  ? 'w-6 h-2 bg-[#2C1A0E]'
-                  : 'w-2 h-2 bg-[#C9B59C]/60 hover:bg-[#8B6F5C]'
+                  ? 'w-6 h-2 bg-[#3A2A20]'
+                  : 'w-2 h-2 bg-[#F6C453]/60 hover:bg-[#E07A3C]'
                   }`}
               />
             )
@@ -284,7 +284,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
           onClick={() => setIsAutoplay(prev => !prev)}
           title={isAutoplay ? 'Pause auto-sliding' : 'Play auto-sliding'}
           aria-label={isAutoplay ? 'Pause auto-sliding' : 'Play auto-sliding'}
-          className="w-7 h-7 rounded-full bg-[#EFE9E3]/80 hover:bg-[#2C1A0E] text-[#8B6F5C] hover:text-[#F9F8F6] border border-[#D9CFC7]/70 flex items-center justify-center transition-all duration-200 cursor-pointer shadow-xs"
+          className="w-7 h-7 rounded-full bg-[#F6ECD4] hover:bg-[#3A2A20] text-[#7C604D] hover:text-[#FFF7E4] border border-[#E7D7BE] flex items-center justify-center transition-all duration-200 cursor-pointer shadow-xs"
         >
           {isAutoplay ? (
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
@@ -299,7 +299,7 @@ export function CookieCarousel({ selectedProduct, onSelectProduct }: CookieCarou
         </button>
       </div>
 
-      <span className="text-[0.65rem] text-[#8B6F5C] tracking-wide text-center mt-1">
+      <span className="text-[0.65rem] text-[#7C604D] tracking-wide text-center mt-1">
         Swipe or click arrows to explore all 5 cookies
       </span>
     </div>

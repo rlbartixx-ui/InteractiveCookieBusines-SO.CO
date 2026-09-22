@@ -39,19 +39,19 @@ export function MenuSection({ onSelectProduct }: MenuSectionProps) {
         <div ref={ref} className={`reveal mb-10 sm:mb-14 ${visible ? 'visible' : ''}`}>
           <SectionHeading eyebrow="Our Cookie Menu">
             <div className="flex items-end justify-between flex-wrap gap-4 mb-6 sm:mb-8">
-              <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.2rem)] font-light leading-tight text-[#2C1A0E]">
-                Baked with <em className="italic text-[#8B6F5C]">real butter.</em>
+              <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.2rem)] font-light leading-tight text-[#3A2A20]">
+                Baked with <em className="italic text-[#E07A3C]">real butter.</em>
               </h2>
               <a
                 href="#order"
-                className="text-[0.72rem] tracking-[0.18em] uppercase text-[#8B6F5C] border-b border-[#D9CFC7] hover:border-[#2C1A0E] hover:text-[#2C1A0E] transition-all pb-0.5 font-medium"
+                className="text-[0.72rem] tracking-[0.18em] uppercase text-[#7C604D] border-b border-[#E7D7BE] hover:border-[#3A2A20] hover:text-[#3A2A20] transition-all pb-0.5 font-medium"
               >
                 Curate a Custom Box →
               </a>
             </div>
 
             {/* Dietary & Category Filter Chips with mobile touch slider */}
-            <div className="flex gap-2 overflow-x-auto no-scrollbar touch-scroll py-1.5 border-t border-[#D9CFC7]/60 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
+            <div className="flex gap-2 overflow-x-auto no-scrollbar touch-scroll py-1.5 border-t border-[#E7D7BE] -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
               {FILTER_TABS.map(tab => {
                 const isActive = activeFilter === tab.value
                 const count =
@@ -64,8 +64,8 @@ export function MenuSection({ onSelectProduct }: MenuSectionProps) {
                     key={tab.value}
                     onClick={() => setActiveFilter(tab.value)}
                     className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-200 cursor-pointer shrink-0 ${isActive
-                        ? 'bg-[#2C1A0E] text-[#F9F8F6] shadow-sm ring-1 ring-[#C9B59C]/40'
-                        : 'bg-[#EFE9E3]/70 text-[#8B6F5C] hover:bg-[#EFE9E3] hover:text-[#2C1A0E] border border-[#D9CFC7]/60'
+                      ? 'bg-[#3A2A20] text-[#FFF7E4] shadow-sm ring-1 ring-[#F6C453]/60'
+                      : 'bg-[#F6ECD4] text-[#7C604D] hover:bg-[#F6ECD4]/80 hover:text-[#3A2A20] border border-[#E7D7BE]'
                       }`}
                   >
                     <span>{tab.label}</span>
@@ -74,7 +74,7 @@ export function MenuSection({ onSelectProduct }: MenuSectionProps) {
                 )
               })}
             </div>
-            <p className="text-[0.65rem] text-[#8B6F5C]/80 mt-2 flex items-center justify-between sm:hidden">
+            <p className="text-[0.65rem] text-[#7C604D]/80 mt-2 flex items-center justify-between sm:hidden">
               <span>Tap any cookie for flavor dossier</span>
               <span>← Scroll filters →</span>
             </p>

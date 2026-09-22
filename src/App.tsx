@@ -20,7 +20,7 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product>(PRODUCTS[0])
 
   return (
-    <div className="min-h-screen bg-[#F9F8F6] text-[#2C1A0E] font-body overflow-x-hidden">
+    <div className="min-h-screen bg-[#FFF7E4] text-[#3A2A20] font-body overflow-x-hidden">
       {/* Navigation Header */}
       <Header />
 

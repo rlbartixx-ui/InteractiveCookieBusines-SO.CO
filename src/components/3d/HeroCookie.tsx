@@ -151,7 +151,8 @@ export function HeroCookie({ mouse, visuals, isInspectMode = false }: HeroCookie
       <mesh position={[0, -0.18, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[1.15, 48]} />
         <meshStandardMaterial
-          color="#2C1A0E"
+          color="#3A2A20"
+          roughness={0.88}
           transparent
           opacity={0.22}
           side={THREE.DoubleSide}

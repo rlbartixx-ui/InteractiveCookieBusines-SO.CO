@@ -124,34 +124,34 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
         style={{
           width: 640,
           height: 640,
-          background: 'radial-gradient(circle, #C9B59C 0%, transparent 65%)',
+          background: 'radial-gradient(circle, #F6C453 0%, transparent 65%)',
           left: mouse.x - 320,
           top: mouse.y - 320,
         }}
       />
 
       {/* Decorative warm background glow blobs */}
-      <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] rounded-full bg-[#EFE9E3] opacity-45 translate-x-1/4 -translate-y-1/4 pointer-events-none blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-60 sm:w-80 h-60 sm:h-80 rounded-full bg-[#EFE9E3] opacity-40 -translate-x-1/3 translate-y-1/3 pointer-events-none blur-2xl" />
+      <div className="absolute top-0 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] rounded-full bg-[#F6ECD4] opacity-50 translate-x-1/4 -translate-y-1/4 pointer-events-none blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-60 sm:w-80 h-60 sm:h-80 rounded-full bg-[#F6ECD4] opacity-45 -translate-x-1/3 translate-y-1/3 pointer-events-none blur-2xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-12 lg:gap-x-16 xl:gap-x-20 gap-y-5 md:gap-y-6 items-center w-full relative z-10">
         {/* Editorial Headline & Copy */}
         <div className="order-1 md:col-start-1 md:row-start-1" style={{ animation: 'fadeUp 0.85s cubic-bezier(0.22,1,0.36,1) both' }}>
           {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#EFE9E3]/90 border border-[#D9CFC7]/70 text-[#8B6F5C] mb-4 sm:mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C9B59C]" />
+          <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#F6ECD4] border border-[#E7D7BE] text-[#7C604D] mb-4 sm:mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E07A3C]" />
             <span className="text-[0.65rem] tracking-[0.22em] uppercase font-semibold">
               Home-Based · Naga City
             </span>
           </div>
 
           {/* Fluid Typography Heading */}
-          <h1 className="font-display text-[clamp(2.4rem,6vw,5.8rem)] font-light leading-[0.96] tracking-tight mb-4 sm:mb-6 text-[#2C1A0E]">
+          <h1 className="font-display text-[clamp(2.4rem,6vw,5.8rem)] font-light leading-[0.96] tracking-tight mb-4 sm:mb-6 text-[#3A2A20]">
             Baked with<br />
-            <span className="italic text-[#C9B59C] relative inline-block font-normal">
+            <span className="italic text-[#E07A3C] relative inline-block font-normal">
               real butter.
               <svg
-                className="absolute -bottom-1 left-0 w-full h-2 text-[#C9B59C]/40"
+                className="absolute -bottom-1 left-0 w-full h-2 text-[#F6C453]"
                 viewBox="0 0 100 8"
                 preserveAspectRatio="none"
               >
@@ -160,7 +160,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
             </span>
           </h1>
 
-          <p className="text-[#8B6F5C] text-[0.9rem] sm:text-[1rem] md:text-[1.05rem] leading-relaxed max-w-[460px] font-normal">
+          <p className="text-[#7C604D] text-[0.9rem] sm:text-[1rem] md:text-[1.05rem] leading-relaxed max-w-[460px] font-normal">
             Every S.O Cookie Co. cookie is mixed in small batches with real butter, rested to develop flavor, and baked fresh in Naga City. Quality cookies at an accessible local price.
           </p>
         </div>
@@ -177,16 +177,16 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
         </div>
 
         {/* Interactive Flavor Switcher with mouse drag & touch side-scroll */}
-        <div className="order-3 md:col-start-1 md:row-start-2 bg-[#EFE9E3]/50 p-3 sm:p-4 rounded-md border border-[#D9CFC7]/60">
+        <div className="order-3 md:col-start-1 md:row-start-2 bg-[#F6ECD4]/60 p-3 sm:p-4 rounded-md border border-[#E7D7BE]">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2.5">
-            <span className="text-[0.65rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
+            <span className="text-[0.65rem] tracking-[0.2em] uppercase text-[#7C604D] font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E07A3C] animate-pulse" />
               Freshly Baked Flavors:
             </span>
 
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-              <span className="text-xs font-display italic text-[#2C1A0E]">
-                {selectedProduct.name} · <span className="font-semibold text-[#8B6F5C]">{selectedProduct.price}</span>
+              <span className="text-xs font-display italic text-[#3A2A20]">
+                {selectedProduct.name} · <span className="font-semibold text-[#7C604D]">{selectedProduct.price}</span>
               </span>
               {/* Arrow navigation shortcuts */}
               <div className="flex items-center gap-1">
@@ -194,7 +194,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
                   type="button"
                   onClick={() => scrollSlider(-160)}
                   aria-label="Scroll flavors left"
-                  className="w-5 h-5 rounded-full bg-[#F9F8F6] border border-[#D9CFC7] flex items-center justify-center text-[0.65rem] text-[#8B6F5C] hover:text-[#2C1A0E] hover:border-[#2C1A0E] transition-colors cursor-pointer"
+                  className="w-5 h-5 rounded-full bg-[#FFF7E4] border border-[#E7D7BE] flex items-center justify-center text-[0.65rem] text-[#7C604D] hover:text-[#3A2A20] hover:border-[#3A2A20] transition-colors cursor-pointer"
                 >
                   ←
                 </button>
@@ -202,7 +202,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
                   type="button"
                   onClick={() => scrollSlider(160)}
                   aria-label="Scroll flavors right"
-                  className="w-5 h-5 rounded-full bg-[#F9F8F6] border border-[#D9CFC7] flex items-center justify-center text-[0.65rem] text-[#8B6F5C] hover:text-[#2C1A0E] hover:border-[#2C1A0E] transition-colors cursor-pointer"
+                  className="w-5 h-5 rounded-full bg-[#FFF7E4] border border-[#E7D7BE] flex items-center justify-center text-[0.65rem] text-[#7C604D] hover:text-[#3A2A20] hover:border-[#3A2A20] transition-colors cursor-pointer"
                 >
                   →
                 </button>
@@ -223,7 +223,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
           >
             {/* Smooth Sliding Liquid Indicator */}
             <div
-              className="absolute top-1.5 bottom-1.5 rounded-full bg-[#2C1A0E] shadow-sm pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"
+              className="absolute top-1.5 bottom-1.5 rounded-full bg-[#3A2A20] shadow-sm pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"
               style={{
                 left: `${indicatorStyle.left}px`,
                 width: `${indicatorStyle.width}px`,
@@ -242,8 +242,8 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
                   type="button"
                   onClick={() => handleFlavorClick(product)}
                   className={`relative z-10 flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium shrink-0 transition-colors duration-300 border ${isActive
-                      ? 'text-[#F9F8F6] border-transparent'
-                      : 'text-[#8B6F5C] hover:text-[#2C1A0E] bg-[#F9F8F6]/80 hover:bg-[#F9F8F6] border-[#D9CFC7]/70'
+                    ? 'text-[#FFF7E4] border-transparent'
+                    : 'text-[#7C604D] hover:text-[#3A2A20] bg-[#FFF7E4]/80 hover:bg-[#FFF7E4] border-[#E7D7BE]'
                     } ${isGrabbing ? 'cursor-grabbing' : 'cursor-pointer'}`}
                 >
                   <span
@@ -256,7 +256,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
               )
             })}
           </div>
-          <div className="flex items-center justify-between flex-wrap gap-1 text-[0.65rem] text-[#8B6F5C]/80 mt-2">
+          <div className="flex items-center justify-between flex-wrap gap-1 text-[0.65rem] text-[#7C604D]/80 mt-2">
             <span>Hold &amp; drag left/right to browse all flavors</span>
             <span className="text-[0.62rem] opacity-75">All 5 flavors</span>
           </div>
@@ -266,40 +266,40 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
         <div className="order-4 md:col-start-1 md:row-start-3 flex flex-col sm:flex-row md:flex-col lg:flex-row items-stretch sm:items-center md:items-stretch lg:items-center gap-3 sm:gap-4">
           <a
             href="#order"
-            className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] px-6 lg:px-7 py-3.5 lg:py-4 text-[0.72rem] lg:text-[0.75rem] tracking-[0.14em] uppercase hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all duration-300 shadow-md font-medium text-center"
+            className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#3A2A20] text-[#FFF7E4] px-6 lg:px-7 py-3.5 lg:py-4 text-[0.72rem] lg:text-[0.75rem] tracking-[0.14em] uppercase hover:bg-[#E07A3C] hover:text-[#FFF7E4] transition-all duration-300 shadow-md font-medium text-center"
           >
             <span>Build Your Custom Box</span>
             <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
           </a>
           <a
             href="#menu"
-            className="inline-flex items-center justify-center rounded-sm border border-[#D9CFC7] bg-[#F9F8F6]/60 text-[#2C1A0E] px-5 lg:px-6 py-3.5 lg:py-4 text-[0.72rem] lg:text-[0.75rem] tracking-[0.14em] uppercase hover:border-[#2C1A0E] hover:bg-[#EFE9E3] transition-all duration-200 text-center font-medium"
+            className="inline-flex items-center justify-center rounded-sm border border-[#E7D7BE] bg-[#FFF7E4]/80 text-[#3A2A20] px-5 lg:px-6 py-3.5 lg:py-4 text-[0.72rem] lg:text-[0.75rem] tracking-[0.14em] uppercase hover:border-[#3A2A20] hover:bg-[#F6ECD4] transition-all duration-200 text-center font-medium"
           >
             Explore 5 Flavors
           </a>
         </div>
 
         {/* Artisanal Trust Chips */}
-        <div className="order-5 md:col-start-1 md:row-start-4 pt-5 md:pt-6 border-t border-[#D9CFC7]/60 grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
+        <div className="order-5 md:col-start-1 md:row-start-4 pt-5 md:pt-6 border-t border-[#E7D7BE] grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
           <div>
-            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">Real Butter</p>
-            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Baked With Care</p>
+            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#3A2A20]">Real Butter</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#7C604D]">Baked With Care</p>
           </div>
-          <div className="border-x border-[#D9CFC7]/60 px-1 sm:px-2">
-            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">Small Batch</p>
-            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Dough Rested</p>
+          <div className="border-x border-[#E7D7BE] px-1 sm:px-2">
+            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#3A2A20]">Small Batch</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#7C604D]">Dough Rested</p>
           </div>
           <div>
-            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">Naga City</p>
-            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Home-Based</p>
+            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#3A2A20]">Naga City</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#7C604D]">Home-Based</p>
           </div>
         </div>
       </div>
 
       {/* Scroll Down Indicator */}
       <div className="hidden sm:flex absolute bottom-5 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 opacity-40 pointer-events-none">
-        <span className="text-[0.6rem] tracking-[0.25em] uppercase text-[#8B6F5C]">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-[#C9B59C] to-transparent animate-pulse" />
+        <span className="text-[0.6rem] tracking-[0.25em] uppercase text-[#7C604D]">Scroll</span>
+        <div className="w-px h-8 bg-gradient-to-b from-[#F6C453] to-transparent animate-pulse" />
       </div>
     </section>
   )

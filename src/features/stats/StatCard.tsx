@@ -13,15 +13,15 @@ export function StatCard({ stat, index, active, duration = 1200 }: StatCardProps
 
   return (
     <div
-      className={`p-4 sm:p-6 text-center rounded-sm bg-[#F9F8F6]/80 border border-[#D9CFC7]/60 reveal reveal-delay-${index + 1
+      className={`p-4 sm:p-6 text-center rounded-sm bg-[#FFF7E4]/80 border border-[#E7D7BE]/60 reveal reveal-delay-${index + 1
         } ${active ? 'visible' : ''}`}
     >
-      <p className="font-display text-[clamp(2.2rem,4vw,3.6rem)] font-light leading-none text-[#2C1A0E]">
-        {stat.prefix && <span className="text-[#C9B59C] font-normal">{stat.prefix}</span>}
+      <p className="font-display text-[clamp(2.2rem,4vw,3.6rem)] font-light leading-none text-[#3A2A20]">
+        {stat.prefix && <span className="text-[#E07A3C] font-normal">{stat.prefix}</span>}
         {count}
-        <span className="text-[#C9B59C] font-normal">{stat.suffix}</span>
+        <span className="text-[#E07A3C] font-normal">{stat.suffix}</span>
       </p>
-      <p className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.16em] uppercase text-[#8B6F5C] mt-2 font-medium">
+      <p className="text-[0.68rem] sm:text-[0.72rem] tracking-[0.16em] uppercase text-[#7C604D] mt-2 font-medium">
         {stat.label}
       </p>
     </div>

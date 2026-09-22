@@ -1,95 +1,149 @@
+import logoImg from '../../images/Logo.png'
+
 export function Footer() {
   return (
-    <footer id="find-us" className="bg-[#22140B] border-t border-[#3D2616]">
+    <footer id="find-us" className="bg-[#57413A] border-t border-[#46342E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-14 sm:py-16 md:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="sm:col-span-2 md:col-span-1">
-          <p className="font-display text-[1.8rem] sm:text-[2rem] font-light text-[#F9F8F6] leading-none mb-3">
-            S.O<span className="text-[#C9B59C]"> Cookie Co.</span>
-          </p>
-          <p className="text-xs sm:text-sm text-[#D9CFC7]/70 leading-relaxed max-w-[260px] mb-4">
+          <a href="#" className="inline-block mb-3 focus:outline-none" aria-label="S.O Cookie Co. Home">
+            <img
+              src={logoImg}
+              alt="S.O Cookie Co."
+              className="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_2px_12px_rgba(255,247,228,0.2)]"
+            />
+          </a>
+          <p className="text-xs sm:text-sm text-[#FFF7E4]/90 leading-relaxed max-w-[260px] mb-4">
             Home-based cookie business in Naga City, Camarines Sur. Quality cookies at an accessible local price, baked with real butter.
           </p>
           {/* Live Kitchen Status Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C1A0E] border border-[#8B6F5C]/30 text-[0.65rem] text-[#C9B59C]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#48352E] border border-[#6E544B]/60 text-[0.65rem] text-[#F6C453]">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span>Home Kitchen · Small Batch Daily</span>
           </div>
-          <div className="flex gap-4 mt-5">
-            {['Instagram'].map(s => (
-              <a
-                key={s}
-                href="https://www.instagram.com/s.ocookieco/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-[0.68rem] tracking-widest uppercase text-[#8B6F5C] hover:text-[#C9B59C] border-b border-transparent hover:border-[#C9B59C] pb-0.5 transition-all"
-              >
-                {s} ↗
-              </a>
-            ))}
+          {/* Social Links with Icons */}
+          <div className="flex items-center gap-2.5 mt-5">
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/s.ocookieco/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              title="Instagram (@s.ocookieco)"
+              className="w-9 h-9 rounded-full bg-[#48352E] border border-[#6E544B]/60 text-[#FFF7E4] hover:text-[#FFF7E4] hover:bg-[#E07A3C] hover:border-[#E07A3C] transition-all duration-200 flex items-center justify-center shadow-xs active:scale-95"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+
+            {/* Facebook */}
+            <a
+              href="https://www.facebook.com/S.OCookieCo777"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              title="Facebook (S.OCookieCo777)"
+              className="w-9 h-9 rounded-full bg-[#48352E] border border-[#6E544B]/60 text-[#FFF7E4] hover:text-[#FFF7E4] hover:bg-[#E07A3C] hover:border-[#E07A3C] transition-all duration-200 flex items-center justify-center shadow-xs active:scale-95"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+
+            {/* Threads */}
+            <a
+              href="https://www.threads.com/@s.ocookieco"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Threads"
+              title="Threads (@s.ocookieco)"
+              className="w-9 h-9 rounded-full bg-[#48352E] border border-[#6E544B]/60 text-[#FFF7E4] hover:text-[#FFF7E4] hover:bg-[#E07A3C] hover:border-[#E07A3C] transition-all duration-200 flex items-center justify-center shadow-xs active:scale-95"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 192 192">
+                <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z" />
+              </svg>
+            </a>
+
+            {/* TikTok */}
+            <a
+              href="https://www.tiktok.com/@s.ocookieco"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok"
+              title="TikTok (@s.ocookieco)"
+              className="w-9 h-9 rounded-full bg-[#48352E] border border-[#6E544B]/60 text-[#FFF7E4] hover:text-[#FFF7E4] hover:bg-[#E07A3C] hover:border-[#E07A3C] transition-all duration-200 flex items-center justify-center shadow-xs active:scale-95"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+              </svg>
+            </a>
           </div>
         </div>
 
         {/* Quick Links */}
         <div>
-          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#C9B59C] mb-3 font-semibold">
+          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#F6C453] mb-3 font-semibold">
             Explore
           </p>
-          <ul className="space-y-2 text-xs sm:text-sm text-[#D9CFC7]/80">
+          <ul className="space-y-2 text-xs sm:text-sm text-[#FFF7E4]/85">
             <li>
-              <a href="#menu" className="hover:text-[#F9F8F6] transition-colors">Cookie Menu</a>
+              <a href="#menu" className="hover:text-[#F6C453] transition-colors">Cookie Menu</a>
             </li>
             <li>
-              <a href="#process" className="hover:text-[#F9F8F6] transition-colors">Our Baking Process</a>
+              <a href="#process" className="hover:text-[#F6C453] transition-colors">Our Baking Process</a>
             </li>
             <li>
-              <a href="#our-story" className="hover:text-[#F9F8F6] transition-colors">Our Story</a>
+              <a href="#our-story" className="hover:text-[#F6C453] transition-colors">Our Story</a>
             </li>
             <li>
-              <a href="#order" className="hover:text-[#F9F8F6] transition-colors">Custom Cookie Box</a>
+              <a href="#order" className="hover:text-[#F6C453] transition-colors">Custom Cookie Box</a>
             </li>
           </ul>
         </div>
 
-        {/* Pickup & Order Schedule */}
+        {/* Availability */}
         <div>
-          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#C9B59C] mb-3 font-semibold">
-            Pickup Schedule
+          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#F6C453] mb-3 font-semibold">
+            Pick-up and Delivery
           </p>
-          <div className="space-y-1.5 text-xs sm:text-sm text-[#D9CFC7]/80">
-            <p>Tue – Sun · 8:00 AM – 2:00 PM</p>
-            <p className="text-[#8B6F5C] text-xs pt-0.5">Closed on Mondays</p>
-            <p className="text-[0.68rem] text-[#C9B59C]/80 italic pt-1">Pre-orders ensure your box is reserved</p>
+          <div className="space-y-2 text-xs sm:text-sm text-[#FFF7E4]/90">
+            <p className="text-[#FFF7E4] font-medium">
+              Message us for availability.
+            </p>
+            <p className="text-xs text-[#FFF7E4]/80 leading-relaxed">
+              We bake in small daily batches. Reach out via direct message to check today’s fresh bake and secure your cookie box.
+            </p>
           </div>
         </div>
 
         {/* Pickup Point & Location */}
         <div>
-          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#C9B59C] mb-3 font-semibold">
+          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#F6C453] mb-3 font-semibold">
             Pickup Point &amp; Location
           </p>
-          <div className="text-xs sm:text-sm text-[#D9CFC7]/80 space-y-1.5">
+          <div className="text-xs sm:text-sm text-[#FFF7E4]/90 space-y-1.5">
             <div>
-              <p className="text-[#F9F8F6] font-medium">NCF Liboton Gate</p>
-              <p className="text-[0.72rem] text-[#C9B59C]">Designated pickup point</p>
-              <p className="text-[0.68rem] text-[#8B6F5C] italic pt-0.5">
+              <p className="text-[#FFF7E4] font-medium">NCF Liboton Gate</p>
+              <p className="text-[0.72rem] text-[#F6C453]">Designated pickup point</p>
+              <p className="text-[0.68rem] text-[#FFF7E4]/70 italic pt-0.5">
                 (Not a permanent store)
               </p>
             </div>
-            <div className="pt-2 border-t border-[#8B6F5C]/20">
-              <p className="text-[#F9F8F6] text-xs">Naga City, Camarines Sur</p>
-              <p className="text-[0.68rem] text-[#8B6F5C]">Home-Based Business</p>
+            <div className="pt-2 border-t border-[#6E544B]/40">
+              <p className="text-[#FFF7E4] text-xs">Naga City, Camarines Sur</p>
+              <p className="text-[0.68rem] text-[#FFF7E4]/75">Home-Based Business</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-[#8B6F5C]/15 px-4 sm:px-6 md:px-8 py-6">
+      <div className="border-t border-[#6E544B]/40 px-4 sm:px-6 md:px-8 py-6">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-[0.68rem] text-[#8B6F5C]/80 text-center sm:text-left">
+          <p className="text-[0.68rem] text-[#FFF7E4]/80 text-center sm:text-left">
             © 2026 S.O Cookie Co. Home-Based Cookie Business · Naga City. All rights reserved.
           </p>
-          <p className="font-display italic text-[#8B6F5C]/70 text-xs sm:text-sm text-center sm:text-right">
+          <p className="font-display italic text-[#F6C453]/90 text-xs sm:text-sm text-center sm:text-right">
             Baked with real butter.
           </p>
         </div>
