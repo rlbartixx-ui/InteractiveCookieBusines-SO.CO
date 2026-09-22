@@ -1,5 +1,5 @@
-import { useState, useRef, useCallback } from 'react'
-import { CookieScene } from '../../components/3d/CookieScene'
+import { useState, useRef, useCallback, useEffect } from 'react'
+import { CookieCarousel } from './CookieCarousel'
 import { PRODUCTS } from '../../data/products'
 import type { Product } from '../../types'
 
@@ -10,9 +10,15 @@ interface HeroSectionProps {
 
 export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionProps) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
-  const [isInspectMode, setIsInspectMode] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
-  const mouse3d = useRef<[number, number]>([0, 0])
+
+  // Liquid sliding indicator refs & state
+  const tabRefs = useRef<{ [key: number]: HTMLButtonElement | null }>({})
+  const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number; opacity: number }>({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  })
 
   // Mouse drag side-scroll state & refs
   const sliderRef = useRef<HTMLDivElement>(null)
@@ -21,6 +27,36 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
   const startX = useRef(0)
   const scrollLeftStart = useRef(0)
   const hasMoved = useRef(false)
+
+  // Update sliding indicator position
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeEl = tabRefs.current[selectedProduct.id]
+      if (activeEl && sliderRef.current) {
+        const left = activeEl.offsetLeft
+        const width = activeEl.offsetWidth
+
+        setIndicatorStyle({
+          left,
+          width,
+          opacity: 1,
+        })
+
+        // Auto-scroll slider if active tab is partly hidden
+        const scrollLeft = sliderRef.current.scrollLeft
+        const clientWidth = sliderRef.current.clientWidth
+        if (left < scrollLeft + 10) {
+          sliderRef.current.scrollTo({ left: Math.max(0, left - 16), behavior: 'smooth' })
+        } else if (left + width > scrollLeft + clientWidth - 10) {
+          sliderRef.current.scrollTo({ left: left + width - clientWidth + 24, behavior: 'smooth' })
+        }
+      }
+    }
+
+    updateIndicator()
+    window.addEventListener('resize', updateIndicator)
+    return () => window.removeEventListener('resize', updateIndicator)
+  }, [selectedProduct.id])
 
   const handleSliderMouseDown = (e: React.MouseEvent) => {
     if (!sliderRef.current) return
@@ -74,10 +110,6 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
     const rect = heroRef.current?.getBoundingClientRect()
     if (!rect) return
     setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top })
-    mouse3d.current = [
-      ((e.clientX - rect.left) / rect.width) * 2 - 1,
-      -(((e.clientY - rect.top) / rect.height) * 2 - 1),
-    ]
   }, [])
 
   return (
@@ -133,78 +165,23 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
           </p>
         </div>
 
-        {/* Interactive 3D Cookie Canvas */}
+        {/* Interactive Cookie Showcase Carousel */}
         <div
-          className="order-2 md:col-start-2 md:row-start-1 md:row-span-4 relative flex flex-col justify-center items-center w-full my-1 md:my-0 overflow-hidden sm:overflow-visible"
+          className="order-2 md:col-start-2 md:row-start-1 md:row-span-4 relative flex flex-col justify-center items-center w-full my-1 md:my-0 -translate-y-3 sm:-translate-y-5 md:-translate-y-7 lg:-translate-y-9 overflow-hidden sm:overflow-visible"
           style={{ animation: 'scaleIn 1s cubic-bezier(0.22,1,0.36,1) both 0.15s' }}
         >
-          {/* Subtle spinning decorative ring (safely scaled to avoid mobile/tablet overflow) */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-            <svg
-              viewBox="0 0 320 320"
-              className="w-[260px] h-[260px] min-[400px]:w-[290px] min-[400px]:h-[290px] sm:w-[340px] sm:h-[340px] md:w-[350px] md:h-[350px] lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px] spin-slow opacity-25"
-            >
-              <circle
-                cx="160"
-                cy="160"
-                r="154"
-                fill="none"
-                stroke="#C9B59C"
-                strokeWidth="0.8"
-                strokeDasharray="4 10"
-              />
-            </svg>
-          </div>
-
-          {/* Fluid Responsive 3D Canvas Box */}
-          <div className="relative w-full max-w-[260px] min-[400px]:max-w-[290px] sm:max-w-[340px] md:max-w-[350px] lg:max-w-[420px] xl:max-w-[480px] aspect-square mx-auto">
-            <CookieScene
-              mouse={mouse3d}
-              visuals={selectedProduct.visuals}
-              isInspectMode={isInspectMode}
-            />
-          </div>
-
-          {/* 360° Inspect Badge & Instructions */}
-          <div className="mt-2.5 sm:mt-4 flex flex-col items-center gap-1 z-20">
-            <button
-              onClick={() => setIsInspectMode(prev => !prev)}
-              className={`inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[0.68rem] sm:text-xs font-medium uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-sm ${isInspectMode
-                ? 'bg-[#2C1A0E] text-[#F9F8F6] ring-2 ring-[#C9B59C]'
-                : 'bg-[#F9F8F6] border border-[#D9CFC7] text-[#8B6F5C] hover:border-[#2C1A0E] hover:text-[#2C1A0E]'
-                }`}
-            >
-              <svg
-                className={`w-3.5 h-3.5 transition-transform duration-500 ${isInspectMode ? 'rotate-180 text-[#C9B59C]' : ''
-                  }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
-              <span>{isInspectMode ? 'Exit 360° View' : '360° Interactive View'}</span>
-            </button>
-
-            <span className="text-[0.65rem] sm:text-[0.68rem] text-[#8B6F5C] tracking-wide text-center">
-              {isInspectMode
-                ? 'Drag to rotate · Pinch or scroll to zoom'
-                : 'Interactive · Moves with cursor and touch'}
-            </span>
-          </div>
+          <CookieCarousel
+            selectedProduct={selectedProduct}
+            onSelectProduct={onSelectProduct}
+          />
         </div>
 
-        {/* Interactive 3D Flavor Switcher with mouse drag & touch side-scroll */}
+        {/* Interactive Flavor Switcher with mouse drag & touch side-scroll */}
         <div className="order-3 md:col-start-1 md:row-start-2 bg-[#EFE9E3]/50 p-3 sm:p-4 rounded-md border border-[#D9CFC7]/60">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2.5">
             <span className="text-[0.65rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
-              Live 3D Cookie:
+              Freshly Baked Flavors:
             </span>
 
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
@@ -241,23 +218,37 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
             onMouseUp={handleSliderMouseUp}
             onMouseLeave={handleSliderMouseLeave}
             onWheel={handleSliderWheel}
-            className={`flex gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar touch-scroll py-1 -mx-1 px-1 pr-10 select-none ${isGrabbing ? 'cursor-grabbing' : 'cursor-grab'
+            className={`relative flex gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar touch-scroll py-1.5 -mx-1 px-1 pr-10 select-none items-center ${isGrabbing ? 'cursor-grabbing' : 'cursor-grab'
               }`}
           >
+            {/* Smooth Sliding Liquid Indicator */}
+            <div
+              className="absolute top-1.5 bottom-1.5 rounded-full bg-[#2C1A0E] shadow-sm pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] z-0"
+              style={{
+                left: `${indicatorStyle.left}px`,
+                width: `${indicatorStyle.width}px`,
+                opacity: indicatorStyle.opacity,
+              }}
+            />
+
             {PRODUCTS.map(product => {
               const isActive = product.id === selectedProduct.id
               return (
                 <button
                   key={product.id}
+                  ref={el => {
+                    tabRefs.current[product.id] = el
+                  }}
                   type="button"
                   onClick={() => handleFlavorClick(product)}
-                  className={`flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium shrink-0 transition-all duration-300 ${isActive
-                    ? 'bg-[#2C1A0E] text-[#F9F8F6] shadow-sm scale-102 ring-1 ring-[#C9B59C]/50'
-                    : 'bg-[#F9F8F6] text-[#8B6F5C] hover:bg-[#F9F8F6]/90 hover:text-[#2C1A0E] border border-[#D9CFC7]/70'
+                  className={`relative z-10 flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium shrink-0 transition-colors duration-300 border ${isActive
+                      ? 'text-[#F9F8F6] border-transparent'
+                      : 'text-[#8B6F5C] hover:text-[#2C1A0E] bg-[#F9F8F6]/80 hover:bg-[#F9F8F6] border-[#D9CFC7]/70'
                     } ${isGrabbing ? 'cursor-grabbing' : 'cursor-pointer'}`}
                 >
                   <span
-                    className="w-2.5 h-2.5 rounded-full ring-1 ring-black/10 shrink-0"
+                    className={`w-2.5 h-2.5 rounded-full ring-1 ring-black/10 shrink-0 transition-transform duration-300 ${isActive ? 'scale-110 ring-white/50' : ''
+                      }`}
                     style={{ backgroundColor: product.visuals.topColor }}
                   />
                   <span className="whitespace-nowrap">{product.name}</span>

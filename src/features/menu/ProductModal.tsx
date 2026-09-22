@@ -180,7 +180,7 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
                 }}
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-sm bg-[#2C1A0E] text-[#F9F8F6] py-3 text-[0.72rem] tracking-widest uppercase font-medium hover:bg-[#C9B59C] hover:text-[#2C1A0E] transition-all cursor-pointer shadow-sm"
               >
-                <span>Inspect in 3D Live</span>
+                <span>View in Showcase</span>
                 <span>→</span>
               </button>
               <a

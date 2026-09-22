@@ -5,6 +5,12 @@ import midnightBiteImg from '../images/MidnightBite.jpg'
 import matchaMuseImg from '../images/MatchaMuse.jpg'
 import goldenDripImg from '../images/GoldenDrip.jpg'
 
+import handOriginalImg from '../images/hand-original-cookie.jpg'
+import handVelvetImg from '../images/hand-velvet.jpg'
+import handMidnightImg from '../images/hand-midnight.jpg'
+import handMatchaImg from '../images/hand-matcha.jpg'
+import handBiscoffImg from '../images/hand-biscoff.jpg'
+
 export const PRODUCTS: Product[] = [
   {
     id: 1,
@@ -15,6 +21,7 @@ export const PRODUCTS: Product[] = [
     tag: 'Bestseller',
     dietary: ['bestseller', 'nut-free'],
     img: chocolateChipImg,
+    handImg: handOriginalImg,
     bg: '#F1E8DC',
     visuals: {
       crustColor: '#A8703F',
@@ -58,6 +65,7 @@ export const PRODUCTS: Product[] = [
     tag: 'Signature',
     dietary: ['nut-free'],
     img: velvetCrushImg,
+    handImg: handVelvetImg,
     bg: '#EEDCDD',
     visuals: {
       crustColor: '#6B1B22',
@@ -101,6 +109,7 @@ export const PRODUCTS: Product[] = [
     tag: "Chef's Pick",
     dietary: ['bestseller', 'nut-free'],
     img: midnightBiteImg,
+    handImg: handMidnightImg,
     bg: '#E3DFDD',
     visuals: {
       crustColor: '#181412',
@@ -143,6 +152,7 @@ export const PRODUCTS: Product[] = [
     tag: 'Specialty',
     dietary: ['nut-free'],
     img: matchaMuseImg,
+    handImg: handMatchaImg,
     bg: '#E1E8DC',
     visuals: {
       crustColor: '#4C5B32',
@@ -180,11 +190,12 @@ export const PRODUCTS: Product[] = [
     id: 5,
     slug: 'golden-drip',
     name: 'Golden Drip',
-    desc: 'Honey caramel drizzle, toasted oats, and a touch of flake salt. Chewy and comforting.',
+    desc: 'Lotus Biscoff cookie center, browned real butter dough, and rich caramel notes. Chewy, spiced, and comforting.',
     price: '₱35',
     tag: 'New',
     dietary: ['new', 'nut-free'],
     img: goldenDripImg,
+    handImg: handBiscoffImg,
     bg: '#EFE2CF',
     visuals: {
       crustColor: '#A06A26',

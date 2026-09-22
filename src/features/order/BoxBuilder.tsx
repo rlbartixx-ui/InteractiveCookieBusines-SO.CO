@@ -35,13 +35,22 @@ export function BoxBuilder({ onInspectProduct }: BoxBuilderProps) {
     PRODUCTS[4], // Golden Drip
   ])
   const [copied, setCopied] = useState(false)
+  const [lastAddedIndex, setLastAddedIndex] = useState<number | null>(null)
+  const [animatingId, setAnimatingId] = useState<number | null>(null)
 
   const currentConfig = BOX_OPTIONS.find(b => b.capacity === selectedCapacity) || BOX_OPTIONS[1]
 
   // Add flavor to box
   const handleAddProduct = (product: Product) => {
     if (boxItems.length < selectedCapacity) {
+      const newIndex = boxItems.length
       setBoxItems(prev => [...prev, product])
+      setLastAddedIndex(newIndex)
+      setAnimatingId(product.id)
+      setTimeout(() => {
+        setLastAddedIndex(null)
+        setAnimatingId(null)
+      }, 700)
     }
   }
 
@@ -65,6 +74,8 @@ export function BoxBuilder({ onInspectProduct }: BoxBuilderProps) {
       filled.push(PRODUCTS[i % PRODUCTS.length])
     }
     setBoxItems(filled)
+    setLastAddedIndex(selectedCapacity - 1)
+    setTimeout(() => setLastAddedIndex(null), 700)
   }
 
   // Reset / clear box
@@ -178,12 +189,12 @@ Customer Name: [Your Name]`
             Box Slots ({boxItems.length} of {selectedCapacity} filled)
           </p>
           <span
-            className={`text-xs font-semibold px-2 py-0.5 rounded-full ${isFull
-              ? 'bg-emerald-100 text-emerald-800'
+            className={`text-xs font-semibold px-2.5 py-0.5 rounded-full transition-all duration-300 ${isFull
+              ? 'bg-emerald-100 text-emerald-800 ring-2 ring-emerald-400/50 shadow-sm'
               : 'bg-amber-100 text-amber-800'
               }`}
           >
-            {isFull ? 'Box Complete' : `${remainingSlots} slots remaining`}
+            {isFull ? 'Box Complete!' : `${remainingSlots} slots remaining`}
           </span>
         </div>
 
@@ -191,17 +202,44 @@ Customer Name: [Your Name]`
         <div className="grid grid-cols-2 min-[360px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-2.5">
           {Array.from({ length: selectedCapacity }).map((_, index) => {
             const item = boxItems[index]
+            const isJustAdded = index === lastAddedIndex
+
             if (item) {
               return (
                 <div
                   key={index}
+                  style={
+                    isJustAdded
+                      ? { animation: 'cookieDrop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both' }
+                      : undefined
+                  }
                   className="relative group bg-[#F9F8F6] border border-[#D9CFC7] p-2 rounded-sm flex flex-col items-center text-center shadow-xs transition-transform duration-200 hover:scale-102"
                 >
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border border-[#D9CFC7]/80 mb-1"
-                  />
+                  {/* Floating +1 Micro-badge on addition */}
+                  {isJustAdded && (
+                    <span
+                      className="absolute -top-3 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-[#2C1A0E] text-[#F9F8F6] text-[0.6rem] font-bold shadow-md pointer-events-none z-20 whitespace-nowrap"
+                      style={{ animation: 'badgeFloat 0.75s ease-out forwards' }}
+                    >
+                      +1 Added
+                    </span>
+                  )}
+
+                  <div className="relative">
+                    {/* Golden Drop Ripple Ring */}
+                    {isJustAdded && (
+                      <span
+                        className="absolute inset-0 rounded-full border-2 border-[#C9B59C] pointer-events-none z-10"
+                        style={{ animation: 'cookieRipple 0.65s ease-out forwards' }}
+                      />
+                    )}
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border border-[#D9CFC7]/80 mb-1"
+                    />
+                  </div>
+
                   <p className="text-[0.7rem] font-medium text-[#2C1A0E] leading-tight line-clamp-1">
                     {item.name}
                   </p>
@@ -210,7 +248,7 @@ Customer Name: [Your Name]`
                   {/* Remove button */}
                   <button
                     onClick={() => handleRemoveItem(index)}
-                    className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#2C1A0E] text-[#F9F8F6] rounded-full text-xs flex items-center justify-center opacity-80 hover:opacity-100 cursor-pointer shadow-sm"
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#2C1A0E] text-[#F9F8F6] rounded-full text-xs flex items-center justify-center opacity-80 hover:opacity-100 cursor-pointer shadow-sm active:scale-90 transition-transform"
                     aria-label={`Remove ${item.name} from slot ${index + 1}`}
                   >
                     ✕
@@ -271,12 +309,14 @@ Customer Name: [Your Name]`
                   <button
                     disabled={isFull}
                     onClick={() => handleAddProduct(product)}
-                    className={`px-3 py-1 rounded-sm text-xs uppercase tracking-wider font-medium cursor-pointer transition-all ${isFull
+                    className={`px-3 py-1 rounded-sm text-xs uppercase tracking-wider font-medium cursor-pointer transition-all active:scale-90 flex items-center gap-1 ${isFull
                       ? 'opacity-40 bg-[#D9CFC7] text-[#8B6F5C] cursor-not-allowed'
-                      : 'bg-[#2C1A0E] text-[#F9F8F6] hover:bg-[#C9B59C] hover:text-[#2C1A0E]'
+                      : animatingId === product.id
+                        ? 'bg-[#C9B59C] text-[#2C1A0E] scale-95 shadow-inner'
+                        : 'bg-[#2C1A0E] text-[#F9F8F6] hover:bg-[#C9B59C] hover:text-[#2C1A0E]'
                       }`}
                   >
-                    ＋ Add
+                    {animatingId === product.id ? '✓ Added' : '＋ Add'}
                   </button>
                 </div>
               </div>

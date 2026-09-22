@@ -23,12 +23,6 @@ export function ProductCard({ product, index, visible, onSelect }: ProductCardPr
           </div>
         )}
 
-        {/* 3D badge */}
-        <div className="absolute top-3.5 right-3.5 z-10 rounded-full bg-[#F9F8F6]/90 backdrop-blur-sm px-2.5 py-0.5 text-[0.6rem] tracking-wider uppercase text-[#8B6F5C] border border-[#D9CFC7]/60 shadow-xs flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
-          <span>3D</span>
-        </div>
-
         <img
           src={product.img}
           alt={product.name}

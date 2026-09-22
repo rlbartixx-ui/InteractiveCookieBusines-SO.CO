@@ -40,6 +40,7 @@ export interface Product {
   tag?: string
   dietary: DietaryCategory[]
   img: string
+  handImg?: string
   bg: string
   visuals: Cookie3DVisuals
   profile: FlavorProfile
