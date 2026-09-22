@@ -27,7 +27,7 @@ export function NewsletterSection() {
         {emailSent ? (
           <div className="bg-[#F9F8F6] p-5 rounded-sm border border-[#D9CFC7] shadow-sm animate-fadeUp">
             <p className="font-display text-lg text-[#2C1A0E] mb-1">
-              Welcome to the S.O Co. Table
+              Welcome to S.O Cookie Co.
             </p>
             <p className="text-xs text-[#8B6F5C] mb-3">
               Your code for 10% off your next box:

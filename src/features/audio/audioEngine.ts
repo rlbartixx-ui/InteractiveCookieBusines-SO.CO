@@ -1,5 +1,5 @@
 /**
- * Cozy Restaurant Piano Music Engine for S.O Co.
+ * Cozy Restaurant Piano Music Engine for S.O Cookie Co.
  * Generates continuous, soothing, warm acoustic cafe piano music
  * with room acoustic resonance and felt-hammer harmonics.
  * 100% procedural with zero network lag or broken audio links.

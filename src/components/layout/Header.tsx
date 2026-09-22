@@ -45,13 +45,13 @@ export function Header({ navItems = NAV_ITEMS }: HeaderProps) {
           <a
             href="#"
             className="group flex flex-col items-start leading-none focus:outline-none"
-            aria-label="S.O Co. Home"
+            aria-label="S.O Cookie Co. Home"
           >
             <span className="font-display text-[1.45rem] sm:text-[1.7rem] font-light tracking-tight text-[#2C1A0E]">
-              S.O<span className="text-[#C9B59C] font-normal group-hover:text-[#2C1A0E] transition-colors"> Co.</span>
+              S.O<span className="text-[#C9B59C] font-normal group-hover:text-[#2C1A0E] transition-colors"> Cookie Co.</span>
             </span>
-            <span className="text-[0.55rem] tracking-[0.25em] uppercase text-[#8B6F5C]/80 mt-0.5">
-              Small Batch · Bakery
+            <span className="text-[0.55rem] tracking-[0.2em] uppercase text-[#8B6F5C]/80 mt-0.5">
+              Home-Based · Naga City
             </span>
           </a>
 
@@ -133,9 +133,9 @@ export function Header({ navItems = NAV_ITEMS }: HeaderProps) {
             <div className="flex items-center justify-between pb-6 border-b border-[#D9CFC7]/60">
               <div>
                 <span className="font-display text-2xl font-light text-[#2C1A0E]">
-                  S.O<span className="text-[#C9B59C]"> Co.</span>
+                  S.O<span className="text-[#C9B59C]"> Cookie Co.</span>
                 </span>
-                <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C]">Artisanal Bakes</p>
+                <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C]">Home-Based · Naga City</p>
               </div>
               <button
                 onClick={() => setMenuOpen(false)}

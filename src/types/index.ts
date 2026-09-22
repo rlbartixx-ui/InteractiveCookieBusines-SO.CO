@@ -61,6 +61,7 @@ export interface Testimonial {
 }
 
 export interface StatItem {
+  prefix?: string
   value: number
   suffix: string
   label: string

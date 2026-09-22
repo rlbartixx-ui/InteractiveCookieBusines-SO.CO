@@ -1,11 +1,10 @@
 export const NAV_ITEMS = ['Menu', 'Process', 'Our Story', 'Order', 'Find Us']
 
 export const TICKER_ITEMS = [
-  'Small Batch',
-  'Baked Fresh Daily',
-  'Hand Crafted',
-  'Made with Love',
-  'No Shortcuts',
-  'S.O Co.',
-  'Seasonal Flavors',
+  'S.O Cookie Co.',
+  'Baked with Real Butter',
+  'Home-Based in Naga City',
+  'Quality & Accessible',
+  'Small Batch Daily',
+  'NCF Liboton Gate Pickup Point',
 ]

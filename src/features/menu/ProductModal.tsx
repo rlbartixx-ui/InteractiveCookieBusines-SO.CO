@@ -69,14 +69,6 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
                 {product.tag}
               </span>
             )}
-            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 bg-[#F9F8F6]/90 backdrop-blur-md p-3 sm:p-3.5 rounded-xs border border-[#D9CFC7]/80">
-              <p className="text-[0.6rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold">
-                Artisanal Batch Bake
-              </p>
-              <p className="font-display italic text-xs sm:text-sm text-[#2C1A0E] mt-0.5 line-clamp-1">
-                Hand-folded dough with browned butter &amp; flaky fleur de sel
-              </p>
-            </div>
           </div>
 
           {/* Right Column: Tasting Notes, Sommelier Pairing & Allergens */}
@@ -131,11 +123,11 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
                   </div>
                 </div>
 
-                {/* Sommelier Drink Pairing */}
+                {/* Drink Pairing */}
                 <div className="p-3.5 sm:p-4 bg-[#F9F8F6] border border-[#D9CFC7]/80 border-l-2 border-l-[#2C1A0E] rounded-r-xs flex flex-col justify-between">
                   <div>
                     <p className="text-[0.62rem] tracking-[0.2em] uppercase text-[#8B6F5C] font-semibold mb-1">
-                      Sommelier Pairing
+                      Drink Pairing
                     </p>
                     <p className="font-medium text-xs sm:text-sm text-[#2C1A0E] mb-1">
                       {product.pairing.beverage}
@@ -157,7 +149,7 @@ export function ProductModal({ product, onClose, onInspect3D }: ProductModalProp
                     Freshness &amp; Warming
                   </p>
                   <p className="text-[0.72rem] text-[#8B6F5C] leading-relaxed">
-                    Baked fresh at dawn daily. Warm for 10 seconds in an oven for molten center and buttery aroma.
+                    Baked with real butter in small daily batches. Warm for 10 seconds in an oven for a soft center and rich buttery aroma.
                   </p>
                 </div>
 

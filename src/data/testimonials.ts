@@ -2,18 +2,18 @@ import type { Testimonial } from '../types'
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    quote: "The brown butter cookie ruined all other cookies for me. I'm not even sorry.",
+    quote: "The real butter makes all the difference. Rich, chewy, and easily my favorite cookie in town.",
     name: 'James K.',
-    title: 'Regular since 2022',
+    title: 'Regular customer',
   },
   {
-    quote: 'Ordered a dozen for a wedding shower. Every guest asked for the name. They sold out before the cake.',
+    quote: 'Ordered an assorted box for our family get-together. Everyone loved the Velvet Crush—they were gone in minutes.',
     name: 'Priya L.',
-    title: 'Event host',
+    title: 'Naga City',
   },
   {
-    quote: 'I drove forty minutes for these. Twice. The Noir Tahini is worth every mile.',
+    quote: 'Picked up my box at NCF Liboton Gate. The Midnight Bite paired with black coffee is unmatched.',
     name: 'Maren O.',
-    title: 'Cookie devotee',
+    title: 'Cookie enthusiast',
   },
 ]

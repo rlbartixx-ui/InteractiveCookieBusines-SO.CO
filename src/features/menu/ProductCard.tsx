@@ -60,14 +60,14 @@ export function ProductCard({ product, index, visible, onSelect }: ProductCardPr
           </p>
         </div>
 
-        {/* Sommelier Drink Pairing & Details Footer */}
-        <div className="pt-3 border-t border-[#D9CFC7]/60 flex items-center justify-between text-[0.7rem] text-[#8B6F5C] gap-2">
-          <span className="truncate italic flex items-center gap-1" title={product.pairing.beverage}>
-            <span>Pair:</span>
-            <span className="text-[#2C1A0E] truncate">{product.pairing.beverage}</span>
+        {/* Card Footer */}
+        <div className="pt-3 border-t border-[#D9CFC7]/60 flex items-center justify-between text-[0.72rem] text-[#8B6F5C]">
+          <span className="text-[0.65rem] tracking-wider uppercase text-[#8B6F5C]/80 font-medium">
+            Handcrafted
           </span>
-          <span className="font-semibold text-[#2C1A0E] shrink-0 group-hover:translate-x-0.5 transition-transform">
-            View →
+          <span className="font-semibold text-[#2C1A0E] group-hover:text-[#8B6F5C] group-hover:translate-x-0.5 transition-all flex items-center gap-1">
+            <span>View Details</span>
+            <span>→</span>
           </span>
         </div>
       </div>

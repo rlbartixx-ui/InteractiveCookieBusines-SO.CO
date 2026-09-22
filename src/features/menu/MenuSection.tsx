@@ -37,10 +37,10 @@ export function MenuSection({ onSelectProduct }: MenuSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
         <div ref={ref} className={`reveal mb-10 sm:mb-14 ${visible ? 'visible' : ''}`}>
-          <SectionHeading eyebrow="The Artisan Menu">
+          <SectionHeading eyebrow="Our Cookie Menu">
             <div className="flex items-end justify-between flex-wrap gap-4 mb-6 sm:mb-8">
               <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.2rem)] font-light leading-tight text-[#2C1A0E]">
-                Each one a <em className="italic text-[#C9B59C]">story.</em>
+                Baked with <em className="italic text-[#8B6F5C]">real butter.</em>
               </h2>
               <a
                 href="#order"

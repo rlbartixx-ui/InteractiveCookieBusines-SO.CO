@@ -17,6 +17,7 @@ export function StatCard({ stat, index, active, duration = 1200 }: StatCardProps
         } ${active ? 'visible' : ''}`}
     >
       <p className="font-display text-[clamp(2.2rem,4vw,3.6rem)] font-light leading-none text-[#2C1A0E]">
+        {stat.prefix && <span className="text-[#C9B59C] font-normal">{stat.prefix}</span>}
         {count}
         <span className="text-[#C9B59C] font-normal">{stat.suffix}</span>
       </p>

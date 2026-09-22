@@ -3,13 +3,14 @@ import { SectionHeading } from '../../components/common/SectionHeading'
 
 function ProcessIcon({ step }: { step: string }) {
   if (step === '01') {
-    // Sourcing / Wheat
+    // Prepare / Weighing Scale
     return (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#C9B59C]">
-        <path d="M2 22l10-10" />
-        <path d="M16 8a4 4 0 00-6-6 4 4 0 006 6z" />
-        <path d="M17.5 15a3.5 3.5 0 00-5-5 3.5 3.5 0 005 5z" />
-        <path d="M9 13.5a3.5 3.5 0 00-5-5 3.5 3.5 0 005 5z" />
+        <path d="M12 3v18" />
+        <path d="M6 8l6-3 6 3" />
+        <path d="M6 8l-3 7a3 3 0 006 0L6 8z" />
+        <path d="M18 8l-3 7a3 3 0 006 0L18 8z" />
+        <path d="M9 21h6" />
       </svg>
     )
   }
@@ -86,7 +87,7 @@ export function ProcessSection() {
               {/* Progress connection indicator */}
               <div className="mt-6 pt-4 border-t border-[#8B6F5C]/20 flex items-center justify-between text-[0.68rem] text-[#8B6F5C]">
                 <span>Phase {idx + 1} of 4</span>
-                <span className="text-[#C9B59C] opacity-80 font-mono">100% Craft</span>
+                <span className="text-[#C9B59C] opacity-80 font-mono">Small Batch</span>
               </div>
             </div>
           ))}

@@ -89,14 +89,15 @@ export function BoxBuilder({ onInspectProduct }: BoxBuilderProps) {
       .map(([name, data]) => `• ${data.count}x ${name} (${data.price})`)
       .join('\n')
 
-    return `S.O Co. Custom Cookie Box Order:
+    return `S.O Cookie Co. Custom Cookie Box Order:
 Box Size: ${currentConfig.label} (${boxItems.length}/${selectedCapacity} items)
 Flavors Selected:
 ${itemsList}
 
 Estimated Total: ₱${total}
-Preferred Pickup: [Please specify Date & Time, Tue-Sun 8am-2pm]
-Name: [Your Name]`
+Pickup Point: NCF Liboton Gate (Designated pickup point, Tue-Sun 8am-2pm)
+Preferred Date & Time: [Please specify]
+Customer Name: [Your Name]`
   }
 
   const handleCopyOrder = () => {

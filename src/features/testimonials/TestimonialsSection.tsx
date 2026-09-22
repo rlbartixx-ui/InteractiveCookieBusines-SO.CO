@@ -24,15 +24,31 @@ export function TestimonialsSection() {
 
   return (
     <section
-      className="bg-[#EFE9E3]/70 py-20 sm:py-28 md:py-36 overflow-hidden border-y border-[#D9CFC7]/80"
+      className="bg-[#EFE9E3]/70 py-20 sm:py-28 md:py-36 overflow-hidden border-y border-[#D9CFC7]/80 relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div ref={ref} className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 text-center">
-        <SectionHeading eyebrow="What People Say" centered className="mb-10 sm:mb-14" />
+      {/* Subtle ambient warm glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C9B59C]/15 blur-3xl pointer-events-none" />
+
+      <div
+        ref={ref}
+        className={`max-w-5xl mx-auto px-4 sm:px-6 md:px-8 text-center relative z-10 transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+      >
+        <SectionHeading
+          eyebrow="Voices & Praise"
+          centered
+          className="mb-3 sm:mb-5"
+          eyebrowClassName="text-[0.62rem] sm:text-[0.66rem] tracking-[0.2em] sm:tracking-[0.28em]"
+        >
+          <h2 className="font-display text-[clamp(1.75rem,3.8vw,2.5rem)] font-light text-[#2C1A0E] leading-tight tracking-tight">
+            What People <em className="italic text-[#8B6F5C]">Say</em>
+          </h2>
+        </SectionHeading>
 
         {/* 5-Star Rating Ribbon */}
-        <div className="flex items-center justify-center gap-1.5 mb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F9F8F6]/80 border border-[#D9CFC7]/70 shadow-xs mb-8 sm:mb-10">
           <div className="flex items-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <svg key={i} className="w-3.5 h-3.5 fill-[#C48B44]" viewBox="0 0 20 20">
@@ -40,27 +56,32 @@ export function TestimonialsSection() {
               </svg>
             ))}
           </div>
-          <span className="ml-2 text-xs font-mono text-[#8B6F5C] font-semibold">5.0 / 5.0 Rating</span>
+          <span className="text-xs font-mono text-[#8B6F5C] font-semibold tracking-wide">5.0 / 5.0 Rating</span>
+        </div>
+
+        {/* Decorative Editorial Quote Mark */}
+        <div className="font-serif select-none text-[5rem] sm:text-[7rem] md:text-[8rem] leading-none text-[#C9B59C]/35 -mb-8 sm:-mb-12 pointer-events-none">
+          “
         </div>
 
         {/* Carousel Slide Area */}
-        <div className="relative min-h-[230px] sm:min-h-[180px] md:min-h-[160px] flex items-center justify-center">
+        <div className="relative min-h-[260px] sm:min-h-[200px] md:min-h-[190px] flex items-center justify-center">
           {TESTIMONIALS.map((t, i) => (
             <div
               key={t.name}
-              className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out px-2 ${i === activeIdx
-                ? 'opacity-100 translate-x-0 scale-100'
-                : 'opacity-0 translate-x-10 scale-95 pointer-events-none'
+              className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out px-4 sm:px-8 ${i === activeIdx
+                  ? 'opacity-100 translate-x-0 scale-100'
+                  : 'opacity-0 translate-x-12 scale-95 pointer-events-none'
                 }`}
             >
-              <blockquote className="font-display text-[clamp(1.25rem,3.2vw,2rem)] font-light italic leading-snug text-[#2C1A0E] mb-6">
+              <blockquote className="font-display text-[clamp(1.75rem,4.2vw,3.25rem)] font-light italic leading-[1.2] text-[#2C1A0E] mb-6 sm:mb-8 max-w-4xl mx-auto">
                 "{t.quote}"
               </blockquote>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                <p className="font-medium text-[0.85rem] tracking-wide text-[#2C1A0E]">{t.name}</p>
-                <span className="text-[#D9CFC7]">·</span>
-                <p className="text-[0.68rem] tracking-widest uppercase text-[#8B6F5C]">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-600/90 shadow-xs ring-2 ring-emerald-600/20" />
+                <p className="font-medium text-[0.95rem] sm:text-base tracking-wide text-[#2C1A0E]">{t.name}</p>
+                <span className="text-[#C9B59C]">·</span>
+                <p className="text-[0.72rem] sm:text-[0.78rem] tracking-widest uppercase text-[#8B6F5C] font-mono">
                   {t.title}
                 </p>
               </div>
@@ -69,23 +90,23 @@ export function TestimonialsSection() {
         </div>
 
         {/* Navigation Arrows & Dots */}
-        <div className="flex justify-center items-center gap-4 mt-10">
+        <div className="flex justify-center items-center gap-4 sm:gap-5 mt-10 sm:mt-12">
           <button
             onClick={handlePrev}
-            className="w-8 h-8 rounded-full border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] flex items-center justify-center hover:bg-[#2C1A0E] hover:text-[#F9F8F6] transition-colors cursor-pointer text-xs"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] flex items-center justify-center hover:bg-[#2C1A0E] hover:text-[#F9F8F6] hover:border-[#2C1A0E] transition-all duration-200 cursor-pointer text-sm shadow-xs"
             aria-label="Previous testimonial"
           >
             ←
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIdx(i)}
                 className={`transition-all duration-300 cursor-pointer ${i === activeIdx
-                  ? 'w-7 h-1.5 rounded-xs bg-[#2C1A0E]'
-                  : 'w-2 h-1.5 rounded-xs bg-[#D9CFC7] hover:bg-[#C9B59C]'
+                    ? 'w-8 h-2 rounded-full bg-[#2C1A0E]'
+                    : 'w-2.5 h-2 rounded-full bg-[#D9CFC7] hover:bg-[#C9B59C]'
                   }`}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
@@ -94,7 +115,7 @@ export function TestimonialsSection() {
 
           <button
             onClick={handleNext}
-            className="w-8 h-8 rounded-full border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] flex items-center justify-center hover:bg-[#2C1A0E] hover:text-[#F9F8F6] transition-colors cursor-pointer text-xs"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D9CFC7] bg-[#F9F8F6] text-[#2C1A0E] flex items-center justify-center hover:bg-[#2C1A0E] hover:text-[#F9F8F6] hover:border-[#2C1A0E] transition-all duration-200 cursor-pointer text-sm shadow-xs"
             aria-label="Next testimonial"
           >
             →

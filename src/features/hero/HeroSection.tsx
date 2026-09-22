@@ -109,7 +109,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
           <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#EFE9E3]/90 border border-[#D9CFC7]/70 text-[#8B6F5C] mb-4 sm:mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C9B59C]" />
             <span className="text-[0.65rem] tracking-[0.22em] uppercase font-semibold">
-              Small Batch · Hand Crafted Daily
+              Home-Based · Naga City
             </span>
           </div>
 
@@ -117,7 +117,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
           <h1 className="font-display text-[clamp(2.4rem,6vw,5.8rem)] font-light leading-[0.96] tracking-tight mb-4 sm:mb-6 text-[#2C1A0E]">
             Baked with<br />
             <span className="italic text-[#C9B59C] relative inline-block font-normal">
-              intention.
+              real butter.
               <svg
                 className="absolute -bottom-1 left-0 w-full h-2 text-[#C9B59C]/40"
                 viewBox="0 0 100 8"
@@ -129,7 +129,7 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
           </h1>
 
           <p className="text-[#8B6F5C] text-[0.9rem] sm:text-[1rem] md:text-[1.05rem] leading-relaxed max-w-[460px] font-normal">
-            Every S.O Co. cookie is mixed by hand, rested 24 hours, and pulled fresh from the hearth every morning. Never frozen, never rushed.
+            Every S.O Cookie Co. cookie is mixed in small batches with real butter, rested to develop flavor, and baked fresh in Naga City. Quality cookies at an accessible local price.
           </p>
         </div>
 
@@ -291,16 +291,16 @@ export function HeroSection({ selectedProduct, onSelectProduct }: HeroSectionPro
         {/* Artisanal Trust Chips */}
         <div className="order-5 md:col-start-1 md:row-start-4 pt-5 md:pt-6 border-t border-[#D9CFC7]/60 grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
           <div>
-            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">100% Real</p>
-            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Browned Butter</p>
+            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">Real Butter</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Baked With Care</p>
           </div>
           <div className="border-x border-[#D9CFC7]/60 px-1 sm:px-2">
-            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">24 Hours</p>
+            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">Small Batch</p>
             <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Dough Rested</p>
           </div>
           <div>
-            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">6:00 AM</p>
-            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Baked Fresh Daily</p>
+            <p className="font-display text-xs min-[360px]:text-sm sm:text-base font-medium text-[#2C1A0E]">Naga City</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-[#8B6F5C]">Home-Based</p>
           </div>
         </div>
       </div>

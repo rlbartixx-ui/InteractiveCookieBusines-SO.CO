@@ -2,7 +2,7 @@ import type { StatItem } from '../types'
 
 export const STATS: StatItem[] = [
   { value: 5, suffix: '', label: 'Rotating Flavors' },
-  { value: 500, suffix: '+', label: 'Handcrafted Weekly' },
+  { prefix: '₱', value: 20, suffix: '', label: 'Accessible Starting Price' },
   { value: 24, suffix: 'h', label: 'Dough Rest Period' },
-  { value: 100, suffix: '%', label: 'French Browned Butter' },
+  { value: 1, suffix: ' Kitchen', label: 'Home-Based in Naga City' },
 ]
